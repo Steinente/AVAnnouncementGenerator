@@ -1,0 +1,397 @@
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('../fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceSansProSemiBold';
+  src: url('../fonts/SourceSansPro-SemiBold.ttf') format('truetype');
+}
+
+body {
+  font-family: 'SourceSansPro', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 0;
+  background-image: url('../img/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.gray-stripe {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 550px;
+  height: 100%;
+  background-color: #1a1a1a70;
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.849);
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+  text-align: right;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  background-image: url('../img/AV.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+input[type="checkbox"]:disabled {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled::before {
+  opacity: 0.5;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  background-color: #004494;
+}
+
+#canvas-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px 0;
+  width: 100%;
+  max-height: calc(100vh - 150px);
+}
+
+#canvas {
+  max-width: 500px;
+  height: auto;
+}
+
+.help-icon {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.help-icon:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.help-icon:hover .tooltip {
+  display: block;
+}
+
+.tooltip p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modalCloseBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#arcLink {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 380px;
+}
+
+.error-message {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f44336;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
+}
+
+.error-message p {
+  margin: 0 15px 0 0;
+}
+
+.error-message .close-error {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .gray-stripe {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+  }
+
+  .grid-container {
+    grid-template-columns: 150px 1fr;
+    grid-gap: 10px;
+  }
+
+  .grid-item {
+    text-align: center;
+  }
+
+  #canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .button-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  button {
+    width: auto;
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
+  .help-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .tooltip {
+    left: auto;
+    right: 10px;
+    width: 180px;
+  }
+
+  .modal-content {
+    margin: 60% auto;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .modal-content input[type="text"] {
+    font-size: 14px;
+  }
+
+  .modal-content button {
+    font-size: 14px;
+  }
+
+  #arcLink {
+    min-width: auto;
+  }
+
+  .close {
+    font-size: 24px;
+  }
+}
