@@ -244,9 +244,7 @@ function generateImage(onComplete) {
         ? chapterInput.toUpperCase().trim()
         : getLocalStorage('chapter').toUpperCase() || ''
       const twoLines = chapterInput.trim() ? twoLinesInput : getLocalStorage('twoLines') === 'true'
-      const date = dateInput.trim()
-        ? convertMonth(dateInput.trim(), false)
-        : getLocalStorage('date').toUpperCase() || ''
+      const date = formatDate(dateInput.trim()).toUpperCase() || getLocalStorage('date').toUpperCase() || ''
       const time = timeInput.trim() ? timeInput.toUpperCase().trim() : getLocalStorage('time').toUpperCase() || ''
       const place = placeInput.trim() ? placeInput.toUpperCase().trim() : getLocalStorage('place').toUpperCase() || ''
 
@@ -454,6 +452,14 @@ function convertMonth(dateString, toNumber = true) {
     return `${day}. ${monthNumbers[month]} ${year}`
   }
 
+  return dateString
+}
+
+function formatDate(dateString) {
+  const regex = /^\d{2}\.\d{2}\.\d{4}$/
+  if (regex.test(dateString)) {
+    return convertMonth(dateString, false)
+  }
   return dateString
 }
 
