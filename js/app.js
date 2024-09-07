@@ -127,7 +127,41 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHints()
   updatePlaceholders()
   generateTimeOptions()
-  loadTimeSettings();
+  loadTimeSettings()
+})
+
+document.getElementById('datePickerIcon').addEventListener('click', event => {
+  const icon = event.target
+  const popup = document.getElementById('datePickerPopup')
+  const iconRect = icon.getBoundingClientRect()
+
+  popup.style.display = 'block'
+  popup.style.top = `${iconRect.bottom + window.scrollY}px`
+  popup.style.left = `${iconRect.right + window.scrollX - popup.offsetWidth}px`
+})
+
+document.getElementById('setDateBtn').addEventListener('click', () => {
+  const selectedDate = document.getElementById('datePicker').value
+  const dateInput = document.getElementById('date')
+
+  if (selectedDate) {
+    const dateObj = new Date(selectedDate)
+    const day = String(dateObj.getDate()).padStart(2, '0')
+    const month = dateObj.toLocaleString('de-DE', { month: 'long' })
+    const year = dateObj.getFullYear()
+    dateInput.value = `${day}. ${month} ${year}`
+  }
+
+  document.getElementById('datePickerPopup').style.display = 'none'
+})
+
+document.addEventListener('click', event => {
+  const popup = document.getElementById('datePickerPopup')
+  const icon = document.getElementById('datePickerIcon')
+
+  if (!popup.contains(event.target) && !icon.contains(event.target)) {
+    popup.style.display = 'none'
+  }
 })
 
 document.getElementById('timePickerIcon').addEventListener('click', event => {
@@ -181,14 +215,14 @@ document.getElementById('saveDate').addEventListener('click', () => {
 })
 
 document.getElementById('saveTime').addEventListener('click', () => {
-  const timeValue = document.getElementById('time').value;
-  const startTimeValue = document.getElementById('startTimePopup').value;
-  const endTimeValue = document.getElementById('endTimePopup').value;
+  const timeValue = document.getElementById('time').value
+  const startTimeValue = document.getElementById('startTimePopup').value
+  const endTimeValue = document.getElementById('endTimePopup').value
 
-  setLocalStorage('time', timeValue);
-  setLocalStorage('startTime', startTimeValue);
-  setLocalStorage('endTime', endTimeValue);
-});
+  setLocalStorage('time', timeValue)
+  setLocalStorage('startTime', startTimeValue)
+  setLocalStorage('endTime', endTimeValue)
+})
 
 document.getElementById('savePlace').addEventListener('click', () => {
   const placeValue = document.getElementById('place').value
@@ -482,34 +516,34 @@ function getLocalStorage(name) {
 }
 
 function generateTimeOptions() {
-  const selectStart = document.getElementById('startTimePopup');
-  const selectEnd = document.getElementById('endTimePopup');
+  const selectStart = document.getElementById('startTimePopup')
+  const selectEnd = document.getElementById('endTimePopup')
 
   for (let hour = 0; hour < 24; hour++) {
-      for (let minutes = 0; minutes < 60; minutes += 15) {
-          const timeString = `${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-          
-          const optionStart = document.createElement('option');
-          optionStart.value = timeString;
-          optionStart.textContent = timeString;
-          if (timeString === '11:00') optionStart.selected = true;
-          selectStart.appendChild(optionStart);
-          
-          const optionEnd = document.createElement('option');
-          optionEnd.value = timeString;
-          optionEnd.textContent = timeString;
-          if (timeString === '14:00') optionEnd.selected = true;
-          selectEnd.appendChild(optionEnd);
-      }
+    for (let minutes = 0; minutes < 60; minutes += 15) {
+      const timeString = `${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+
+      const optionStart = document.createElement('option')
+      optionStart.value = timeString
+      optionStart.textContent = timeString
+      if (timeString === '11:00') optionStart.selected = true
+      selectStart.appendChild(optionStart)
+
+      const optionEnd = document.createElement('option')
+      optionEnd.value = timeString
+      optionEnd.textContent = timeString
+      if (timeString === '14:00') optionEnd.selected = true
+      selectEnd.appendChild(optionEnd)
+    }
   }
 }
 
 function loadTimeSettings() {
-  const savedTime = getLocalStorage('time') || '';
-  const savedStartTime = getLocalStorage('startTime') || '11:00';
-  const savedEndTime = getLocalStorage('endTime') || '14:00';
+  const savedTime = getLocalStorage('time') || ''
+  const savedStartTime = getLocalStorage('startTime') || '11:00'
+  const savedEndTime = getLocalStorage('endTime') || '14:00'
 
-  document.getElementById('time').value = savedTime;
-  document.getElementById('startTimePopup').value = savedStartTime;
-  document.getElementById('endTimePopup').value = savedEndTime;
+  document.getElementById('time').value = savedTime
+  document.getElementById('startTimePopup').value = savedStartTime
+  document.getElementById('endTimePopup').value = savedEndTime
 }

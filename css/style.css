@@ -147,6 +147,54 @@ input[type='checkbox']:disabled::before {
   opacity: 0.5;
 }
 
+.date-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+#date {
+  width: 100%;
+  padding-right: 40px; /* Platz für das Kalendersymbol */
+}
+
+.date-picker-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.date-picker-popup {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.date-picker-popup input[type="date"] {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.date-picker-popup button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .time-input-wrapper {
   position: relative;
   display: inline-block;
@@ -442,12 +490,12 @@ button:active {
     width: auto;
   }
 
-  input[type="text"] {
+  input[type='text'] {
     width: 100%;
     max-width: 100%;
   }
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     width: 30px;
     height: 30px;
   }

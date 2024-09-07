@@ -14,6 +14,7 @@
 
     <div class="container">
       <div class="grid-container">
+        <!-- Chapter -->
         <div class="grid-item">
           <label for="chapter">Chapter:</label>
         </div>
@@ -24,6 +25,7 @@
           <span class="save-icon" id="saveChapter" data-hint="Speichern">&#128190;</span>
         </div>
 
+        <!-- Two lines -->
         <div class="grid-item">
           <label for="twoLines">Chapter zweizeilig:</label>
         </div>
@@ -34,16 +36,21 @@
           <span class="save-icon" id="saveTwoLines" data-hint="Speichern">&#128190;</span>
         </div>
 
+        <!-- Date -->
         <div class="grid-item">
           <label for="date">Datum:</label>
         </div>
         <div class="grid-item">
-          <input type="text" id="date" />
+          <div class="date-input-wrapper">
+            <input type="text" id="date" placeholder="01. Januar 2024" />
+            <span class="date-picker-icon" id="datePickerIcon">&#x1F4C5;</span>
+          </div>
         </div>
         <div class="grid-item">
           <span class="save-icon" id="saveDate" data-hint="Speichern">&#128190;</span>
         </div>
 
+        <!-- Time -->
         <div class="grid-item">
           <label for="time">Zeit:</label>
         </div>
@@ -57,6 +64,7 @@
           <span class="save-icon" id="saveTime" data-hint="Speichern">&#128190;</span>
         </div>
 
+        <!-- Place -->
         <div class="grid-item">
           <label for="place">Veranstaltungsort:</label>
         </div>
@@ -68,6 +76,7 @@
         </div>
       </div>
 
+      <!-- Buttons -->
       <div class="button-container">
         <button id="arcBtn">Aus ARC füllen</button>
         <button id="previewBtn">Vorschau</button>
@@ -75,12 +84,14 @@
       </div>
     </div>
 
+    <!-- Image -->
     <div id="canvas-container">
       <canvas id="canvas"></canvas>
     </div>
 
     <div id="output"></div>
 
+    <!-- Help icon -->
     <div class="help-icon" id="helpIcon">
       <span>?</span>
       <div class="tooltip" id="tooltip">
@@ -97,6 +108,7 @@
       </div>
     </div>
 
+    <!-- ARC modal -->
     <div id="arcModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -111,16 +123,24 @@
       </div>
     </div>
 
+    <!-- Error message -->
     <div id="errorMessage" class="error-message">
       <span class="close-error">&times;</span>
       <p id="errorText"></p>
     </div>
 
+    <!-- Time picker -->
     <div id="timePickerPopup" class="time-picker-popup">
       <select id="startTimePopup"></select>
       <span> - </span>
       <select id="endTimePopup"></select>
       <button id="setTimeBtn">Setzen</button>
+    </div>
+
+    <!-- Date picker -->
+    <div id="datePickerPopup" class="date-picker-popup">
+      <input type="date" id="datePicker" />
+      <button id="setDateBtn">Setzen</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
