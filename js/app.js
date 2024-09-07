@@ -551,13 +551,12 @@ function generateTimeOptions() {
 }
 
 function loadTimeSettings() {
-  const savedTime = getLocalStorage('time') || ''
-  const savedStartTime = getLocalStorage('startTime') || '11:00'
-  const savedEndTime = getLocalStorage('endTime') || '14:00'
+  const savedStartTime = getLocalStorage('startTime') || '11:00';
+  const savedEndTime = getLocalStorage('endTime') || '14:00';
 
-  document.getElementById('time').value = savedTime
-  document.getElementById('startTimePopup').value = savedStartTime
-  document.getElementById('endTimePopup').value = savedEndTime
+  document.getElementById('time').placeholder = `${savedStartTime} - ${savedEndTime} Uhr`;
+  document.getElementById('startTimePopup').value = savedStartTime;
+  document.getElementById('endTimePopup').value = savedEndTime;
 }
 
 function hasUmlaut(text) {
