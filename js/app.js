@@ -5,7 +5,7 @@ document.getElementById('previewBtn').addEventListener('click', () => {
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const chapterInput = document.getElementById('chapter').value.trim().toLowerCase()
   const dateInput = document.getElementById('date').value.trim().toLowerCase()
-  const formattedDate = convertMonthToNumber(dateInput).replace(/\s+/g, '')
+  const formattedDate = convertMonth(dateInput).replace(/\s+/g, '')
   const sanitizedChapter = chapterInput.replace(/\s+/g, '-')
   const fileName = `announcement_${sanitizedChapter}_${formattedDate}.png`
 
@@ -172,7 +172,9 @@ function generateImage(onComplete) {
         ? chapterInput.toUpperCase().trim()
         : getLocalStorage('chapter').toUpperCase() || ''
       const twoLines = chapterInput.trim() ? twoLinesInput : getLocalStorage('twoLines') === 'true'
-      const date = dateInput.trim() ? dateInput.toUpperCase().trim() : getLocalStorage('date').toUpperCase() || ''
+      const date = dateInput.trim()
+        ? convertMonth(dateInput.trim(), false)
+        : getLocalStorage('date').toUpperCase() || ''
       const time = timeInput.trim() ? timeInput.toUpperCase().trim() : getLocalStorage('time').toUpperCase() || ''
       const place = placeInput.trim() ? placeInput.toUpperCase().trim() : getLocalStorage('place').toUpperCase() || ''
 
@@ -332,26 +334,52 @@ function drawTextWithSpacing(context, text, x, y, maxWidth, fontSize, font) {
   }
 }
 
-function convertMonthToNumber(dateString) {
+function convertMonth(dateString, toNumber = true) {
   const months = {
-    januar: '01.',
-    februar: '02.',
-    märz: '03.',
-    april: '04.',
-    mai: '05.',
-    juni: '06.',
-    juli: '07.',
-    august: '08.',
-    september: '09.',
-    oktober: '10.',
-    november: '11.',
-    dezember: '12.',
+    januar: '01',
+    februar: '02',
+    märz: '03',
+    april: '04',
+    mai: '05',
+    juni: '06',
+    juli: '07',
+    august: '08',
+    september: '09',
+    oktober: '10',
+    november: '11',
+    dezember: '12',
   }
 
-  for (const [month, number] of Object.entries(months)) {
-    if (dateString.includes(month)) {
-      dateString = dateString.replace(month, number)
+  const monthNumbers = {
+    '01': 'JANUAR',
+    '02': 'FEBRUAR',
+    '03': 'MÄRZ',
+    '04': 'APRIL',
+    '05': 'MAI',
+    '06': 'JUNI',
+    '07': 'JULI',
+    '08': 'AUGUST',
+    '09': 'SEPTEMBER',
+    10: 'OKTOBER',
+    11: 'NOVEMBER',
+    12: 'DEZEMBER',
+  }
+
+  if (toNumber) {
+    // Konvertiere Monatsnamen zu Zahl
+    for (const [monthName, monthNumber] of Object.entries(months)) {
+      if (dateString.toLowerCase().includes(monthName)) {
+        return dateString.toLowerCase().replace(monthName, monthNumber)
+      }
     }
+  } else {
+    // Konvertiere Monatszahl zu ausgeschriebenem Monat
+    const dateParts = dateString.split('.')
+    const day = dateParts[0]
+    const month = dateParts[1]
+    const year = dateParts[2]
+
+    return `${day}. ${monthNumbers[month]} ${year}`
   }
 
   return dateString
