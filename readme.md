@@ -14,7 +14,7 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 ### 1. Manuelle Eingabe
 
-1. Öffne die Datei `index.html` in deinem Webbrowser (z.B. Chrome, Firefox, Safari).
+1. Öffne die Webseite **[AVAnnouncementGenerator](https://steinente.github.io/AVAnnouncementGenerator/)**.
 2. Du siehst vier Felder:
    - **Chapter**: Trage das Chapter ein.
    - **Datum**: Gib das Datum der Cubes ein.
@@ -25,11 +25,6 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 ### 2. Automatische Befüllung der Felder
 
-## Wichtig
-
-- Da die Anwendung lokal ausgeführt wird und nicht auf einem Server, blockieren die meisten Webseiten den Zugriff auf ihre Daten. Um dieses Problem zu umgehen, gibt es Dienste, die die Anfrage über ihre Server umleiten und so den Zugriff ermöglichen. Auch der ARC blockiert Anfragen von lokalen Maschinen.
-- Um diese Einschränkung zu umgehen, besuche die Webseite **[cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)** und klicke auf **Request temporary access to the demo server*. Dadurch erhältst du vorübergehend die Möglichkeit, Daten vom ARC abzufragen.
-
 ## Vorgehen
 
 1. Kopiere den Link eines Events von der Website [**AnimalRightsCalendar**](https://animalrightscalendar.org/).
@@ -39,21 +34,9 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 ### 3. Standardwerte anpassen
 
-1. Öffne die Datei **app.js** unter dem Ordner **js** in einem Texteditor (z.B. Notepad oder einem beliebigen einfachen Editor).
-2. Ganz oben in der Datei findest du die Standardwerte, die bereits vorausgefüllt sind:
-
-```javascript
-const defaultSettings = {
-    chapter: 'Magdeburg',
-    twoLines: false,
-    date: '01. Januar 2024',
-    time: '14:00 - 18:00 Uhr',
-    place: 'Willy-Brandt-Platz'
-};
-```
-
-3. Ändere diese Werte nach deinen Wünschen, z.B. wenn du oft das gleiche Chapter, die gleiche Uhrzeit oder den gleichen Ort verwendest.
-4. Diese Standardwerte werden dann automatisch in die entsprechenden Felder eingetragen, wenn sie leer bleiben. So musst du nur das Datum ändern, falls die anderen Felder immer gleich bleiben.
+1. Trage einen Wert in eines der Felder ein.
+2. Rechts neben dem Feld befindet sich ein Speichern-Symbol - wenn du darauf klickst, speicherst du den aktuellen Wert als Standardwert.
+3. Diese Standardwerte werden dann als Platzhalter in die entsprechenden Felder eingetragen. Bei der Vorschau und dem Download werden, falls die Felder nicht befüllt wurden, die Platzhalter verwendet. So musst du nur das Datum ändern, falls die anderen Felder immer gleich bleiben.
 
 ### 4. Einzigartige Dateibenennung
 
@@ -66,4 +49,8 @@ const defaultSettings = {
 ## Voraussetzungen
 
 - Du benötigst keine speziellen Programme oder Server.
-- Öffne einfach die Datei `index.html` in einem Webbrowser auf deinem Computer oder Smartphone, und schon kannst du loslegen.
+
+## Lokale Ausführung
+
+- Wenn die Anwendung lokal ausgeführt wird und nicht auf einem Server, blockieren die meisten Webseiten den Zugriff auf ihre Daten. Um dieses Problem zu umgehen, gibt es Dienste, die die Anfrage über ihre Server umleiten und so den Zugriff ermöglichen. Auch der ARC blockiert Anfragen von lokalen Maschinen.
+- Um diese Einschränkung zu umgehen, besuche die Webseite **[cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)** und klicke auf **Request temporary access to the demo server*. Dadurch erhältst du vorübergehend die Möglichkeit, Daten vom ARC abzufragen.
