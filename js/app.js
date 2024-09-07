@@ -269,13 +269,13 @@ function generateImage(onComplete) {
         let maxTextWidth = canvas.width - 2 * chapterPadding
         let font = 'SourceSansProSemiBold'
         let chapterYPosition = 885
-        if (hasUmlaut(chapter)) {
-          chapterYPosition += 20
-        }
         if (twoLines) {
           const chapterParts = splitTextInTwoLines(chapter)
           drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
         } else {
+          if (hasUmlaut(chapter)) {
+            chapterYPosition += 20
+          }
           const chapterFontSize = adjustFontSize(context, chapter, maxTextWidth, maxFontSize, font)
           drawTextWithSpacing(context, chapter, chapterPadding, chapterYPosition, maxTextWidth, chapterFontSize, font)
         }
@@ -336,8 +336,8 @@ function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth,
   const metricsLine1 = context.measureText(chapterParts[0])
   const line1Height = metricsLine1.actualBoundingBoxAscent + metricsLine1.actualBoundingBoxDescent
 
-  if (!hasUmlaut(chapterParts[0].split(' ')[0])) {
-    chapterYPosition -= 20
+  if (hasUmlaut(chapterParts[0].split(' ')[0])) {
+    chapterYPosition += 20
   }
 
   drawTextWithSpacing(context, chapterParts[0], chapterPadding, chapterYPosition, targetWidth, finalFontSize, font)
