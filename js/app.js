@@ -268,12 +268,16 @@ function generateImage(onComplete) {
         const chapterPadding = 235
         let maxTextWidth = canvas.width - 2 * chapterPadding
         let font = 'SourceSansProSemiBold'
+        let chapterYPosition = 885
+        if (hasUmlaut(chapter)) {
+          chapterYPosition += 20
+        }
         if (twoLines) {
           const chapterParts = splitTextInTwoLines(chapter)
-          drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font)
+          drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
         } else {
           const chapterFontSize = adjustFontSize(context, chapter, maxTextWidth, maxFontSize, font)
-          drawTextWithSpacing(context, chapter, chapterPadding, 885, maxTextWidth, chapterFontSize, font)
+          drawTextWithSpacing(context, chapter, chapterPadding, chapterYPosition, maxTextWidth, chapterFontSize, font)
         }
 
         // Date
@@ -320,26 +324,28 @@ function splitTextInTwoLines(text) {
   return [words.slice(0, middle).join(' '), words.slice(middle).join(' ')]
 }
 
-function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font) {
+function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition) {
   const widthLine1 = context.measureText(chapterParts[0]).width
   const widthLine2 = context.measureText(chapterParts[1]).width
 
   const longerPart = widthLine1 > widthLine2 ? chapterParts[0] : chapterParts[1]
-
   const finalFontSize = adjustFontSize(context, longerPart, maxTextWidth, maxFontSize - 50, font)
   context.font = `${finalFontSize}px "${font}"`
 
   const targetWidth = maxTextWidth
-
   const metricsLine1 = context.measureText(chapterParts[0])
   const line1Height = metricsLine1.actualBoundingBoxAscent + metricsLine1.actualBoundingBoxDescent
 
-  drawTextWithSpacing(context, chapterParts[0], chapterPadding, 885, targetWidth, finalFontSize, font)
+  if (!hasUmlaut(chapterParts[0].split(' ')[0])) {
+    chapterYPosition -= 20
+  }
+
+  drawTextWithSpacing(context, chapterParts[0], chapterPadding, chapterYPosition, targetWidth, finalFontSize, font)
   drawTextWithSpacing(
     context,
     chapterParts[1],
     chapterPadding,
-    885 + line1Height + 20,
+    chapterYPosition + line1Height + 20,
     targetWidth,
     finalFontSize,
     font
@@ -552,4 +558,9 @@ function loadTimeSettings() {
   document.getElementById('time').value = savedTime
   document.getElementById('startTimePopup').value = savedStartTime
   document.getElementById('endTimePopup').value = savedEndTime
+}
+
+function hasUmlaut(text) {
+  const umlautRegex = /[äöüÄÖÜ]/
+  return umlautRegex.test(text)
 }
