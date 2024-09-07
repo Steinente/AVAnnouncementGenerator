@@ -15,8 +15,9 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 ### 1. Manuelle Eingabe
 
 1. Öffne die Webseite **[AVAnnouncementGenerator](https://steinente.github.io/AVAnnouncementGenerator/)**.
-2. Du siehst vier Felder:
+2. Du siehst fünf Felder:
    - **Chapter**: Trage das Chapter ein.
+   - **Chapter zweizeilig**: Wähle aus, ob das Chapter in zwei Zeilen geschrieben werden soll.
    - **Datum**: Gib das Datum der Cubes ein.
    - **Zeit**: Gib die Start- und Endzeit des Cubes ein.
    - **Veranstaltungsort**: Gib den Ort der Veranstaltung ein.
@@ -48,7 +49,7 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 - Du benötigst keine speziellen Programme oder Server.
 
-## Lokale Ausführung
+## Lokale Ausführung (Nur für Nerds)
 
 - Wenn die Anwendung lokal ausgeführt wird und nicht auf einem Server, blockieren die meisten Webseiten den Zugriff auf ihre Daten. Um dieses Problem zu umgehen, gibt es Dienste, die die Anfrage über ihre Server umleiten und so den Zugriff ermöglichen. Auch der ARC blockiert Anfragen von lokalen Maschinen.
 - Um diese Einschränkung zu umgehen, besuche die Webseite **[cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)** und klicke auf **Request temporary access to the demo server*. Dadurch erhältst du vorübergehend die Möglichkeit, Daten vom ARC abzufragen.
