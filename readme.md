@@ -25,8 +25,6 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 ### 2. Automatische Befüllung der Felder
 
-## Vorgehen
-
 1. Kopiere den Link eines Events von der Website [**AnimalRightsCalendar**](https://animalrightscalendar.org/).
 2. Klicke auf **Aus ARC füllen**.
 3. Füge diesen Link in das Feld "ARC Event-Link" ein.
