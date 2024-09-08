@@ -44,6 +44,7 @@
           <div class="date-input-wrapper">
             <input type="text" id="date" placeholder="01. Januar 2024" />
             <span class="date-picker-icon" id="datePickerIcon">&#x1F4C5;</span>
+            <input type="date" id="hiddenDatePicker" class="date-hidden" />
           </div>
         </div>
         <div class="grid-item">
@@ -135,12 +136,6 @@
       <span> - </span>
       <select id="endTimePopup"></select>
       <button id="setTimeBtn">Setzen</button>
-    </div>
-
-    <!-- Date picker -->
-    <div id="datePickerPopup" class="date-picker-popup">
-      <input type="date" id="datePicker" />
-      <button id="setDateBtn">Setzen</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>

@@ -130,39 +130,23 @@ document.addEventListener('DOMContentLoaded', () => {
   loadTimeSettings()
 })
 
-document.getElementById('datePickerIcon').addEventListener('click', event => {
-  const icon = event.target
-  const popup = document.getElementById('datePickerPopup')
-  const iconRect = icon.getBoundingClientRect()
+document.getElementById('datePickerIcon').addEventListener('click', () => {
+  document.getElementById('hiddenDatePicker').click();
+});
 
-  popup.style.display = 'block'
-  popup.style.top = `${iconRect.bottom + window.scrollY}px`
-  popup.style.left = `${iconRect.right + window.scrollX - popup.offsetWidth}px`
-})
-
-document.getElementById('setDateBtn').addEventListener('click', () => {
-  const selectedDate = document.getElementById('datePicker').value
-  const dateInput = document.getElementById('date')
+document.getElementById('hiddenDatePicker').addEventListener('change', () => {
+  const selectedDate = document.getElementById('hiddenDatePicker').value;
+  const dateInput = document.getElementById('date');
 
   if (selectedDate) {
-    const dateObj = new Date(selectedDate)
-    const day = String(dateObj.getDate()).padStart(2, '0')
-    const month = dateObj.toLocaleString('de-DE', { month: 'long' })
-    const year = dateObj.getFullYear()
-    dateInput.value = `${day}. ${month} ${year}`
+    const dateObj = new Date(selectedDate);
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = dateObj.toLocaleString('de-DE', { month: 'long' });
+    const year = dateObj.getFullYear();
+
+    dateInput.value = `${day}. ${month} ${year}`;
   }
-
-  document.getElementById('datePickerPopup').style.display = 'none'
-})
-
-document.addEventListener('click', event => {
-  const popup = document.getElementById('datePickerPopup')
-  const icon = document.getElementById('datePickerIcon')
-
-  if (!popup.contains(event.target) && !icon.contains(event.target)) {
-    popup.style.display = 'none'
-  }
-})
+});
 
 document.getElementById('timePickerIcon').addEventListener('click', event => {
   const icon = event.target
