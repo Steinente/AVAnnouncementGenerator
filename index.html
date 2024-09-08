@@ -132,9 +132,16 @@
 
     <!-- Time picker -->
     <div id="timePickerPopup" class="time-picker-popup">
-      <select id="startTimePopup"></select>
-      <span> - </span>
-      <select id="endTimePopup"></select>
+      <div class="time-field-wrapper">
+        <label for="startTimePopup">Von:</label>
+        <select id="startTimePopup"></select>
+      </div>
+
+      <div class="time-field-wrapper">
+        <label for="endTimePopup">Bis:</label>
+        <select id="endTimePopup"></select>
+      </div>
+
       <button id="setTimeBtn">Setzen</button>
     </div>
 
