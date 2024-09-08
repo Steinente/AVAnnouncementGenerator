@@ -131,22 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.getElementById('datePickerIcon').addEventListener('click', () => {
-  document.getElementById('hiddenDatePicker').click();
-});
+  document.getElementById('hiddenDatePicker').click()
+})
 
 document.getElementById('hiddenDatePicker').addEventListener('change', () => {
-  const selectedDate = document.getElementById('hiddenDatePicker').value;
-  const dateInput = document.getElementById('date');
+  const selectedDate = document.getElementById('hiddenDatePicker').value
+  const dateInput = document.getElementById('date')
 
   if (selectedDate) {
-    const dateObj = new Date(selectedDate);
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    const month = dateObj.toLocaleString('de-DE', { month: 'long' });
-    const year = dateObj.getFullYear();
+    const dateObj = new Date(selectedDate)
+    const day = String(dateObj.getDate()).padStart(2, '0')
+    const month = dateObj.toLocaleString('de-DE', { month: 'long' })
+    const year = dateObj.getFullYear()
 
-    dateInput.value = `${day}. ${month} ${year}`;
+    dateInput.value = `${day}. ${month} ${year}`
   }
-});
+})
 
 document.getElementById('timePickerIcon').addEventListener('click', event => {
   const icon = event.target
