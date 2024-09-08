@@ -170,10 +170,10 @@ input[type='checkbox']:disabled::before {
 .date-hidden {
   position: absolute;
   opacity: 0;
-  width: 40px;
-  height: 40px;
-  right: 10px;
-  top: 50%;
+  width: 26px;
+  height: 26px;
+  right: 9px;
+  top: 52%;
   transform: translateY(-50%);
   cursor: pointer;
 }
