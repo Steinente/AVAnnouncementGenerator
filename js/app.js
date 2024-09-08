@@ -538,25 +538,26 @@ function generateTimeOptions() {
       const optionStart = document.createElement('option')
       optionStart.value = timeString
       optionStart.textContent = timeString
-      if (timeString === '11:00') optionStart.selected = true
+      if (timeString === '14:00') optionStart.selected = true
       selectStart.appendChild(optionStart)
 
       const optionEnd = document.createElement('option')
       optionEnd.value = timeString
       optionEnd.textContent = timeString
-      if (timeString === '14:00') optionEnd.selected = true
+      if (timeString === '18:00') optionEnd.selected = true
       selectEnd.appendChild(optionEnd)
     }
   }
 }
 
 function loadTimeSettings() {
-  const savedStartTime = getLocalStorage('startTime') || '11:00';
-  const savedEndTime = getLocalStorage('endTime') || '14:00';
+  const savedTime = getLocalStorage('time')
+  const savedStartTime = getLocalStorage('startTime') || '14:00'
+  const savedEndTime = getLocalStorage('endTime') || '18:00'
 
-  document.getElementById('time').placeholder = `${savedStartTime} - ${savedEndTime} Uhr`;
-  document.getElementById('startTimePopup').value = savedStartTime;
-  document.getElementById('endTimePopup').value = savedEndTime;
+  document.getElementById('time').placeholder = savedTime
+  document.getElementById('startTimePopup').value = savedStartTime
+  document.getElementById('endTimePopup').value = savedEndTime
 }
 
 function hasUmlaut(text) {
