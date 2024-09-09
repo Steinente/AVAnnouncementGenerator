@@ -387,7 +387,7 @@ function drawTextWithSpacing(context, text, x, y, maxWidth, fontSize, font) {
     spacing = (maxWidth - totalCharsWidth) / (text.length - 1)
   }
 
-  let currentX = x + 5 // +5px because the template is not centered
+  let currentX = x + 4 // +4px because the template is not centered
   for (let i = 0; i < text.length; i++) {
     context.fillText(text[i], currentX, y)
     currentX += charWidths[i] + spacing
