@@ -37,8 +37,12 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
   const eventId = arcLink.split('/').pop()
   const apiLink = `https://animalrightscalendar.org/api/events/${eventId}`
 
-  const proxyUrl = 'https://api.allorigins.win/get?url='
-  const proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
+  let proxiedApiLink = apiLink
+
+  if (window.location.protocol === 'file:') {
+    const proxyUrl = 'https://api.allorigins.win/get?url='
+    proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
+  }
 
   resetFields()
 
