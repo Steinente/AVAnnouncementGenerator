@@ -34,6 +34,12 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
     return
   }
 
+  const validUrlPattern = /^https:\/\/animalrightscalendar\.org\/(events|api\/events)\/[a-zA-Z0-9]{24}$/
+  if (!validUrlPattern.test(arcLink)) {
+    showError('Bitte gib eine gültige ARC-URL eines Events ein.')
+    return
+  }
+
   const eventId = arcLink.split('/').pop()
   const apiLink = `https://animalrightscalendar.org/api/events/${eventId}`
 
