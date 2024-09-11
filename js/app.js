@@ -26,9 +26,28 @@ const templateModal = document.getElementById('templateModal')
 document.getElementById('canvas').addEventListener('contextmenu', function (e) {
   e.preventDefault()
 
+  const contextMenu = document.getElementById('contextMenu')
+
   contextMenu.style.display = 'block'
-  contextMenu.style.top = `${e.clientY}px`
-  contextMenu.style.left = `${e.clientX}px`
+
+  const screenWidth = window.innerWidth
+  const screenHeight = window.innerHeight
+  const menuWidth = contextMenu.offsetWidth
+  const menuHeight = contextMenu.offsetHeight
+
+  let posX = e.clientX || e.touches?.[0]?.clientX
+  let posY = e.clientY || e.touches?.[0]?.clientY
+
+  if (posX + menuWidth > screenWidth) {
+    posX = screenWidth - menuWidth
+  }
+
+  if (posY + menuHeight > screenHeight) {
+    posY = screenHeight - menuHeight
+  }
+
+  contextMenu.style.top = `${posY}px`
+  contextMenu.style.left = `${posX}px`
 
   document.addEventListener('click', function closeMenu() {
     contextMenu.style.display = 'none'
@@ -90,7 +109,7 @@ document.getElementById('setTemplateBtn').addEventListener('click', function () 
         showError('Das Bild muss genau 1665x1665 Pixel groß sein.')
       }
     }
-    
+
     img.onerror = function () {
       showError('Fehler beim Laden des Bildes. Bitte überprüfe den Link.')
     }
