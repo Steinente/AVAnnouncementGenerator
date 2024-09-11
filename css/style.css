@@ -303,6 +303,7 @@ input[type='checkbox']:disabled::before {
 
 button {
   padding: 12px 24px;
+  margin-bottom: 5px;
   font-size: 16px;
   cursor: pointer;
   white-space: nowrap;
@@ -339,6 +340,31 @@ button:active {
 #canvas {
   max-width: 500px;
   height: auto;
+}
+
+.context-menu {
+  position: absolute;
+  display: none;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  min-width: 150px;
+}
+
+.context-menu div {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.context-menu div:hover {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .help-icon {
@@ -433,7 +459,7 @@ button:active {
   border-radius: 5px;
 }
 
-#arcLink {
+#arcLink, #templateLink {
   margin-top: 10px;
   margin-bottom: 10px;
   min-width: 380px;

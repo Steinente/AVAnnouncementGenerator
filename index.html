@@ -80,7 +80,7 @@
       <!-- Buttons -->
       <div class="button-container">
         <button id="arcBtn">Aus ARC füllen</button>
-        <button id="previewBtn">Vorschau</button>
+        <button id="updateBtn">Update Vorschau</button>
         <button id="downloadBtn">Download</button>
       </div>
     </div>
@@ -124,6 +124,17 @@
       </div>
     </div>
 
+    <!-- Template modal -->
+    <div id="templateModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <label for="templateLink">Template-Link:</label>
+        <input type="text" id="templateLink" placeholder="https://example.com/template.jpg" />
+        <br />
+        <button id="setTemplateBtn">Setzen</button>
+      </div>
+    </div>
+
     <!-- Error message -->
     <div id="errorMessage" class="error-message">
       <span class="close-error">&times;</span>
@@ -143,6 +154,12 @@
       </div>
 
       <button id="setTimeBtn">Setzen</button>
+    </div>
+
+    <!-- Canvas Context Menu -->
+    <div id="contextMenu" class="context-menu">
+      <div id="changeTemplateOption">Template ändern</div>
+      <div id="resetTemplateOption">Template zurücksetzen</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>

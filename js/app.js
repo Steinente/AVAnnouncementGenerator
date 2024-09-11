@@ -1,4 +1,4 @@
-document.getElementById('previewBtn').addEventListener('click', () => {
+document.getElementById('updateBtn').addEventListener('click', () => {
   generateImage(() => {})
 })
 
@@ -10,9 +10,8 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
   const fileName = `announcement_${sanitizedChapter}_${formattedDate}.png`
 
   generateImage(canvas => {
-    const imageUrl = canvas.toDataURL('image/png')
     const link = document.createElement('a')
-    link.href = imageUrl
+    link.href = canvas.toDataURL('image/png')
     link.download = fileName
     link.style.display = 'none'
     document.body.appendChild(link)
@@ -20,6 +19,108 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
     document.body.removeChild(link)
   }, 1)
 })
+
+const contextMenu = document.getElementById('contextMenu')
+const templateModal = document.getElementById('templateModal')
+
+document.getElementById('canvas').addEventListener('contextmenu', function (e) {
+  e.preventDefault()
+
+  contextMenu.style.display = 'block'
+  contextMenu.style.top = `${e.clientY}px`
+  contextMenu.style.left = `${e.clientX}px`
+
+  document.addEventListener('click', function closeMenu() {
+    contextMenu.style.display = 'none'
+    document.removeEventListener('click', closeMenu)
+  })
+})
+
+let pressTimer
+
+canvas.addEventListener(
+  'touchstart',
+  function (e) {
+    pressTimer = setTimeout(function () {
+      contextMenu.style.display = 'block'
+      contextMenu.style.top = `${e.touches[0].clientY}px`
+      contextMenu.style.left = `${e.touches[0].clientX}px`
+
+      document.addEventListener('click', function closeMenu() {
+        contextMenu.style.display = 'none'
+        document.removeEventListener('click', closeMenu)
+      })
+    }, 500)
+  },
+  false
+)
+
+canvas.addEventListener(
+  'touchend',
+  function () {
+    clearTimeout(pressTimer)
+  },
+  false
+)
+
+document.getElementById('changeTemplateOption').addEventListener('click', function () {
+  templateModal.style.display = 'block'
+  contextMenu.style.display = 'none'
+})
+
+document.querySelector('#templateModal .close').addEventListener('click', function () {
+  templateModal.style.display = 'none'
+})
+
+document.getElementById('setTemplateBtn').addEventListener('click', function () {
+  const templateLink = document.getElementById('templateLink').value.trim()
+
+  if (templateLink) {
+    const img = new Image()
+    img.crossOrigin = 'anonymous'
+    img.src = templateLink
+
+    img.onload = function () {
+      if (img.width >= 1665 && img.height >= 1665) {
+        setLocalStorage('templateLink', templateLink)
+        templateModal.style.display = 'none'
+        generateImage(() => {})
+        document.getElementById('templateLink').value = ''
+      } else {
+        showError('Das Bild muss genau 1665x1665 Pixel groß sein.')
+      }
+    }
+    
+    img.onerror = function () {
+      showError('Fehler beim Laden des Bildes. Bitte überprüfe den Link.')
+    }
+  } else {
+    showError('Bitte gib eine gültige URL ein.')
+  }
+})
+
+document.getElementById('resetTemplateOption').addEventListener('click', function () {
+  resetCanvasTemplate()
+  contextMenu.style.display = 'none'
+})
+
+function resetCanvasTemplate() {
+  const canvas = document.getElementById('canvas')
+  const context = canvas.getContext('2d')
+  context.clearRect(0, 0, canvas.width, canvas.height)
+
+  localStorage.removeItem('templateLink')
+
+  const img = new Image()
+  if (window.location.protocol === 'file:') {
+    img.crossOrigin = 'anonymous'
+    img.src = 'https://i.imgur.com/noMa6R2.jpeg'
+  } else {
+    img.src = 'img/template.jpeg'
+  }
+
+  generateImage(() => {})
+}
 
 document.getElementById('helpIcon').addEventListener('click', () => {
   const tooltip = document.getElementById('tooltip')
@@ -130,6 +231,8 @@ document.getElementById('arcBtn').addEventListener('click', () => {
 window.addEventListener('click', event => {
   if (event.target === arcModal) {
     arcModal.style.display = 'none'
+  } else if (event.target === templateModal) {
+    templateModal.style.display = 'none'
   }
 })
 
@@ -138,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePlaceholders()
   generateTimeOptions()
   loadTimeSettings()
+  generateImage(() => {})
 })
 
 document.getElementById('datePickerIcon').addEventListener('click', () => {
@@ -242,12 +346,15 @@ function generateImage(onComplete) {
       const time = timeInput.trim() ? timeInput.toUpperCase().trim() : getLocalStorage('time').toUpperCase() || ''
       const place = placeInput.trim() ? placeInput.toUpperCase().trim() : getLocalStorage('place').toUpperCase() || ''
 
+      const img = new Image()
+      const storedTemplateLink =
+        getLocalStorage('templateLink') ||
+        (window.location.protocol === 'file:' ? 'https://i.imgur.com/noMa6R2.jpeg' : 'img/template.jpeg')
+      img.crossOrigin = 'anonymous'
+      img.src = storedTemplateLink
+
       const canvas = document.getElementById('canvas')
       const context = canvas.getContext('2d')
-
-      const img = new Image()
-      img.crossOrigin = 'anonymous'
-      img.src = 'https://i.imgur.com/noMa6R2.jpeg'
 
       img.onload = function () {
         canvas.width = img.width
