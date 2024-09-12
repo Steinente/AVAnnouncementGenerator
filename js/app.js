@@ -5,9 +5,21 @@ document.getElementById('updateBtn').addEventListener('click', () => {
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const chapterInput = document.getElementById('chapter').value.trim().toLowerCase()
   const dateInput = document.getElementById('date').value.trim().toLowerCase()
-  const formattedDate = convertMonth(dateInput).replace(/\s+/g, '')
-  const sanitizedChapter = chapterInput.replace(/\s+/g, '-')
-  const fileName = `announcement_${sanitizedChapter}_${formattedDate}.png`
+
+  const chapter = chapterInput || getLocalStorage('chapter').toLowerCase()
+  const date = dateInput || getLocalStorage('date').toLowerCase()
+
+  const formattedDate = date ? convertMonth(date).replace(/\s+/g, '') : ''
+  const sanitizedChapter = chapter ? chapter.replace(/\s+/g, '-') : ''
+
+  let fileName = 'announcement'
+  if (sanitizedChapter) {
+    fileName += `_${sanitizedChapter}`
+  }
+  if (formattedDate) {
+    fileName += `_${formattedDate}`
+  }
+  fileName += '.png'
 
   generateImage(canvas => {
     const link = document.createElement('a')
@@ -532,18 +544,18 @@ function drawTextWithSpacing(context, text, x, y, maxWidth, fontSize, font) {
 
 function convertMonth(dateString, toNumber = true) {
   const months = {
-    januar: '01',
-    februar: '02',
-    märz: '03',
-    april: '04',
-    mai: '05',
-    juni: '06',
-    juli: '07',
-    august: '08',
-    september: '09',
-    oktober: '10',
-    november: '11',
-    dezember: '12',
+    januar: '01.',
+    februar: '02.',
+    märz: '03.',
+    april: '04.',
+    mai: '05.',
+    juni: '06.',
+    juli: '07.',
+    august: '08.',
+    september: '09.',
+    oktober: '10.',
+    november: '11.',
+    dezember: '12.',
   }
 
   const monthNumbers = {
@@ -562,14 +574,12 @@ function convertMonth(dateString, toNumber = true) {
   }
 
   if (toNumber) {
-    // Konvertiere Monatsnamen zu Zahl
     for (const [monthName, monthNumber] of Object.entries(months)) {
       if (dateString.toLowerCase().includes(monthName)) {
         return dateString.toLowerCase().replace(monthName, monthNumber)
       }
     }
   } else {
-    // Konvertiere Monatszahl zu ausgeschriebenem Monat
     const dateParts = dateString.split('.')
     const day = dateParts[0]
     const month = dateParts[1]
