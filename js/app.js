@@ -382,8 +382,17 @@ function generateImage(onComplete) {
       const context = canvas.getContext('2d')
 
       img.onload = function () {
-        canvas.width = img.width
-        canvas.height = img.height
+        const dpr = window.devicePixelRatio || 1; // Gerätepixelverhältnis (default 1)
+
+        console.log(dpr);
+        
+  
+        // Setze die Canvas-Größe auf die Bildgröße multipliziert mit dem Pixelverhältnis
+        canvas.width = img.width * dpr;
+        canvas.height = img.height * dpr;
+      
+        // Skaliere das Rendering-Kontext ebenfalls
+        context.scale(dpr, dpr);
 
         context.drawImage(img, 0, 0, canvas.width, canvas.height)
 
