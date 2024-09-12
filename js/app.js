@@ -388,22 +388,30 @@ function generateImage(onComplete) {
         context.drawImage(img, 0, 0, canvas.width, canvas.height)
 
         // Chapter
-        context.textBaseline = 'top'
+        context.textBaseline = 'alphabetic'
         context.textAlign = 'left'
         context.fillStyle = 'rgb(230, 0, 0)'
         const chapterPadding = 235
         let maxTextWidth = canvas.width - 2 * chapterPadding
         let font = 'SourceSansProSemiBold'
-        let chapterYPosition = 885
+        let chapterYPosition = 1030
         if (twoLines) {
           const chapterParts = splitTextInTwoLines(chapter)
           drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
         } else {
           if (hasUmlaut(chapter)) {
-            chapterYPosition += 20
+            chapterYPosition += 25
           }
-          const chapterFontSize = adjustFontSize(context, chapter, maxTextWidth, maxFontSize, font)
-          drawTextWithSpacing(context, chapter, chapterPadding, chapterYPosition, maxTextWidth, chapterFontSize, font)
+          const chapterAdjustment = adjustFontSize(context, chapter, maxTextWidth, maxFontSize, font, chapterYPosition)
+          drawTextWithSpacing(
+            context,
+            chapter,
+            chapterPadding,
+            chapterAdjustment.yOffset,
+            maxTextWidth,
+            chapterAdjustment.fontSize,
+            font
+          )
         }
 
         // Date
@@ -412,14 +420,14 @@ function generateImage(onComplete) {
         const datePadding = 405
         maxTextWidth = canvas.width - 2 * datePadding
         const dateAdjustment = adjustFontSizeWithShift(context, date, maxTextWidth, maxFontSize - 80, font)
-        const dateYPosition = 1220 + dateAdjustment.yOffset
+        const dateYPosition = 1300 + dateAdjustment.yOffset
         drawTextWithSpacing(context, date, datePadding, dateYPosition, maxTextWidth, dateAdjustment.fontSize, font)
 
         // Time
         const timePadding = 320
         maxTextWidth = canvas.width - 2 * timePadding
         const timeAdjustment = adjustFontSizeWithShift(context, time, maxTextWidth, maxFontSize - 80, font)
-        const timeYPosition = 1315 + timeAdjustment.yOffset
+        const timeYPosition = 1400 + timeAdjustment.yOffset
         drawTextWithSpacing(context, time, timePadding, timeYPosition, maxTextWidth, timeAdjustment.fontSize, font)
 
         // Place
@@ -427,9 +435,16 @@ function generateImage(onComplete) {
         font = 'SourceSansProSemiBold'
         const placePadding = 235
         maxTextWidth = canvas.width - 2 * placePadding
-        const placeAdjustment = adjustFontSizeWithShift(context, place, maxTextWidth, maxFontSize - 40, font)
-        const placeYPosition = 1405 + placeAdjustment.yOffset
-        drawTextWithSpacing(context, place, placePadding, placeYPosition, maxTextWidth, placeAdjustment.fontSize, font)
+        const placeAdjustment = adjustFontSize(context, place, maxTextWidth, maxFontSize - 40, font, 1520)
+        drawTextWithSpacing(
+          context,
+          place,
+          placePadding,
+          placeAdjustment.yOffset,
+          maxTextWidth,
+          placeAdjustment.fontSize,
+          font
+        )
 
         onComplete(canvas)
       }
@@ -451,35 +466,56 @@ function splitTextInTwoLines(text) {
 }
 
 function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition) {
+  chapterYPosition = chapterYPosition - 30
+  maxFontSize = maxFontSize - 50
+
   const widthLine1 = context.measureText(chapterParts[0]).width
   const widthLine2 = context.measureText(chapterParts[1]).width
 
   const longerPart = widthLine1 > widthLine2 ? chapterParts[0] : chapterParts[1]
-  const finalFontSize = adjustFontSize(context, longerPart, maxTextWidth, maxFontSize - 50, font)
+  const finalFontSize = adjustFontSize(context, longerPart, maxTextWidth, maxFontSize, font, chapterYPosition)
   context.font = `${finalFontSize}px "${font}"`
 
   const targetWidth = maxTextWidth
   const metricsLine1 = context.measureText(chapterParts[0])
   const line1Height = metricsLine1.actualBoundingBoxAscent + metricsLine1.actualBoundingBoxDescent
 
-  if (hasUmlaut(chapterParts[0].split(' ')[0])) {
-    chapterYPosition += 20
+  let adjustedYPositionLine1 = chapterYPosition
+  let adjustedYPositionLine2 = chapterYPosition + line1Height + 10
+
+  if (hasUmlaut(chapterParts[0])) {
+    adjustedYPositionLine1 += 20
   }
 
-  drawTextWithSpacing(context, chapterParts[0], chapterPadding, chapterYPosition, targetWidth, finalFontSize, font)
+  if (hasUmlaut(chapterParts[1])) {
+    adjustedYPositionLine2 += 20
+  }
+
+  drawTextWithSpacing(
+    context,
+    chapterParts[0],
+    chapterPadding,
+    adjustedYPositionLine1,
+    targetWidth,
+    finalFontSize,
+    font
+  )
   drawTextWithSpacing(
     context,
     chapterParts[1],
     chapterPadding,
-    chapterYPosition + line1Height + 20,
+    adjustedYPositionLine2,
     targetWidth,
     finalFontSize,
     font
   )
 }
 
-function adjustFontSize(context, text, maxWidth, maxFontSize, font) {
+function adjustFontSize(context, text, maxWidth, maxFontSize, font, initialY) {
   let fontSize = maxFontSize
+  let yOffset = 0
+  const originalFontSize = fontSize
+
   context.font = `${fontSize}px "${font}"`
   let textWidth = context.measureText(text).width
 
@@ -489,7 +525,10 @@ function adjustFontSize(context, text, maxWidth, maxFontSize, font) {
     textWidth = context.measureText(text).width
   }
 
-  return fontSize
+  const sizeDifference = originalFontSize - fontSize
+  yOffset = sizeDifference / 2
+
+  return { fontSize, yOffset: initialY - yOffset }
 }
 
 function adjustFontSizeWithShift(context, text, maxWidth, maxFontSize, font) {
