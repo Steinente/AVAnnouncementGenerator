@@ -229,14 +229,8 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
       document.getElementById('arcModal').style.display = 'none'
     })
     .catch(error => {
-      if (
-        error.message === 'Failed to fetch' ||
-        error.message.includes('NetworkError') ||
-        error.message.includes('CORS')
-      ) {
-        showError(
-          'CORS-Fehler: Bitte aktiviere temporären Zugriff unter <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">cors-anywhere.herokuapp.com</a>.'
-        )
+      if (error.message === 'Failed to fetch') {
+        showError('CORS-Fehler: Bitte aktiviere temporären Zugriff unter https://cors-anywhere.herokuapp.com/corsdemo.')
       } else {
         showError('Fehler beim Abrufen der API. Bitte überprüfe den Link.')
       }
