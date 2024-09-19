@@ -52,6 +52,43 @@ body {
   margin-bottom: 15px;
 }
 
+.translate-icon {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative; /* Referenzpunkt für Dropdown-Position */
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%;  /* Positioniert das Dropdown unter dem Symbol */
+  right: 0;   /* Stellt sicher, dass das Menü nach links ausgerichtet ist */
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown-content .flag-icon {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;

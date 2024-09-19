@@ -10,13 +10,23 @@
   <body>
     <div class="gray-stripe"></div>
 
-    <h1 class="title">AV Announcement Generator</h1>
+    <h1 class="title">
+      AV Ankündigungsgenerator
+      <span class="translate-icon"
+        >&#127760;
+        <div class="dropdown-content" id="languageMenu">
+          <a href="#" data-lang="de"><img src="img/lang/de.png" alt="DE" class="flag-icon" /> Deutsch</a>
+          <a href="#" data-lang="en"><img src="img/lang/gb.png" alt="EN" class="flag-icon" /> English</a>
+          <a href="#" data-lang="fr"><img src="img/lang/fr.png" alt="FR" class="flag-icon" /> Français</a>
+        </div>
+      </span>
+    </h1>
 
     <div class="container">
       <div class="grid-container">
         <!-- Chapter -->
         <div class="grid-item">
-          <label for="chapter">Chapter:</label>
+          <label for="chapter">Chapter</label>
         </div>
         <div class="grid-item">
           <input type="text" id="chapter" />
@@ -27,7 +37,7 @@
 
         <!-- Two lines -->
         <div class="grid-item">
-          <label for="twoLines">Chapter zweizeilig:</label>
+          <label for="twoLines">Chapter zweizeilig</label>
         </div>
         <div class="grid-item">
           <input type="checkbox" id="twoLines" />
@@ -38,7 +48,7 @@
 
         <!-- Date -->
         <div class="grid-item">
-          <label for="date">Datum:</label>
+          <label for="date">Datum</label>
         </div>
         <div class="grid-item">
           <div class="date-input-wrapper">
@@ -53,7 +63,7 @@
 
         <!-- Time -->
         <div class="grid-item">
-          <label for="time">Zeit:</label>
+          <label for="time">Zeit</label>
         </div>
         <div class="grid-item">
           <div class="time-input-wrapper">
@@ -67,7 +77,7 @@
 
         <!-- Place -->
         <div class="grid-item">
-          <label for="place">Veranstaltungsort:</label>
+          <label for="place">Veranstaltungsort</label>
         </div>
         <div class="grid-item">
           <input type="text" id="place" />
@@ -96,7 +106,7 @@
     <div class="help-icon" id="helpIcon">
       <span>?</span>
       <div class="tooltip" id="tooltip">
-        <p><strong>Kontakt:</strong></p>
+        <p><strong>Kontakt</strong></p>
         <p>Discord: steinente</p>
         <p>
           Instagram:
@@ -113,7 +123,7 @@
     <div id="arcModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <label for="arcLink">ARC Event-Link:</label>
+        <label for="arcLink">ARC Event-Link</label>
         <input
           type="text"
           id="arcLink"
@@ -128,7 +138,7 @@
     <div id="templateModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <label for="templateLink">Template-Link:</label>
+        <label for="templateLink">Template-Link</label>
         <input type="text" id="templateLink" placeholder="https://example.com/template.jpg" />
         <br />
         <button id="setTemplateBtn">Setzen</button>
@@ -144,12 +154,12 @@
     <!-- Time picker -->
     <div id="timePickerPopup" class="time-picker-popup">
       <div class="time-field-wrapper">
-        <label for="startTimePopup">Von:</label>
+        <label for="startTimePopup">Von</label>
         <select id="startTimePopup"></select>
       </div>
 
       <div class="time-field-wrapper">
-        <label for="endTimePopup">Bis:</label>
+        <label for="endTimePopup">Bis</label>
         <select id="endTimePopup"></select>
       </div>
 
@@ -163,6 +173,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/translationHandler.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

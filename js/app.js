@@ -9,7 +9,8 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
   const chapter = chapterInput || getLocalStorage('chapter').toLowerCase()
   const date = dateInput || getLocalStorage('date').toLowerCase()
 
-  const formattedDate = date ? convertMonth(date).replace(/\s+/g, '') : ''
+  const currentLang = localStorage.getItem('selectedLanguage') || 'de'
+  const formattedDate = date ? convertMonth(date, currentLang).replace(/\s+/g, '') : ''
   const sanitizedChapter = chapter ? chapter.replace(/\s+/g, '-') : ''
 
   let fileName = 'announcement'
@@ -262,7 +263,6 @@ window.addEventListener('click', event => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateHints()
   updatePlaceholders()
   generateTimeOptions()
   loadTimeSettings()
@@ -280,10 +280,13 @@ document.getElementById('hiddenDatePicker').addEventListener('change', () => {
   if (selectedDate) {
     const dateObj = new Date(selectedDate)
     const day = String(dateObj.getDate()).padStart(2, '0')
-    const month = dateObj.toLocaleString('de-DE', { month: 'long' })
+    const monthNumber = String(dateObj.getMonth() + 1).padStart(2, '0')
     const year = dateObj.getFullYear()
 
-    dateInput.value = `${day}. ${month} ${year}`
+    const currentLang = localStorage.getItem('selectedLanguage') || 'de'
+    const formattedDate = convertMonth(`${day}.${monthNumber}.${year}`, currentLang, false)
+
+    dateInput.value = formattedDate
   }
 })
 
@@ -302,12 +305,31 @@ document.getElementById('setTimeBtn').addEventListener('click', () => {
   const endTime = document.getElementById('endTimePopup').value
   const timeInput = document.getElementById('time')
 
+  const currentLang = localStorage.getItem('selectedLanguage') || 'de'
+
   if (startTime && endTime) {
-    timeInput.value = `${startTime} - ${endTime} Uhr`
+    if (currentLang === 'de') {
+      timeInput.value = `${startTime} - ${endTime} Uhr`
+    } else if (currentLang === 'en') {
+      const start12h = convertTo12HourFormat(startTime)
+      const end12h = convertTo12HourFormat(endTime)
+      timeInput.value = `${start12h} - ${end12h}`
+    } else if (currentLang === 'fr') {
+      const startFrench = startTime.replace(':', ' h ')
+      const endFrench = endTime.replace(':', ' h ')
+      timeInput.value = `${startFrench} - ${endFrench}`
+    }
   }
 
   document.getElementById('timePickerPopup').style.display = 'none'
 })
+
+function convertTo12HourFormat(time) {
+  const [hour, minute] = time.split(':')
+  const hour12 = hour % 12 || 12
+  const period = hour >= 12 ? 'PM' : 'AM'
+  return `${hour12}:${minute} ${period}`
+}
 
 document.addEventListener('click', event => {
   const popup = document.getElementById('timePickerPopup')
@@ -575,35 +597,22 @@ function drawTextWithSpacing(context, text, x, y, maxWidth, fontSize, font) {
   }
 }
 
-function convertMonth(dateString, toNumber = true) {
-  const months = {
-    januar: '01.',
-    februar: '02.',
-    märz: '03.',
-    april: '04.',
-    mai: '05.',
-    juni: '06.',
-    juli: '07.',
-    august: '08.',
-    september: '09.',
-    oktober: '10.',
-    november: '11.',
-    dezember: '12.',
-  }
+function convertMonth(dateString, lang, toNumber = true) {
+  const months = translations[lang].months
 
   const monthNumbers = {
-    '01': 'JANUAR',
-    '02': 'FEBRUAR',
-    '03': 'MÄRZ',
-    '04': 'APRIL',
-    '05': 'MAI',
-    '06': 'JUNI',
-    '07': 'JULI',
-    '08': 'AUGUST',
-    '09': 'SEPTEMBER',
-    10: 'OKTOBER',
-    11: 'NOVEMBER',
-    12: 'DEZEMBER',
+    '01': months.january,
+    '02': months.february,
+    '03': months.march,
+    '04': months.april,
+    '05': months.may,
+    '06': months.june,
+    '07': months.july,
+    '08': months.august,
+    '09': months.september,
+    10: months.october,
+    11: months.november,
+    12: months.december,
   }
 
   if (toNumber) {
@@ -627,7 +636,8 @@ function convertMonth(dateString, toNumber = true) {
 function formatDate(dateString) {
   const regex = /^\d{2}\.\d{2}\.\d{4}$/
   if (regex.test(dateString)) {
-    return convertMonth(dateString, false)
+    const currentLang = localStorage.getItem('selectedLanguage') || 'de'
+    return convertMonth(dateString, currentLang, false)
   }
   return dateString
 }
@@ -652,20 +662,6 @@ function resetFields() {
   document.getElementById('twoLines').checked = false
 }
 
-function updateHints() {
-  const chapterHint = `Default-Settings: ${getLocalStorage('chapter') || 'leer'} wird mit dem Feldwert überschrieben.`
-  const twoLinesHint = `Default-Settings: ${getLocalStorage('twoLines') || 'leer'} wird mit dem Feldwert überschrieben.`
-  const dateHint = `Default-Settings: ${getLocalStorage('date') || 'leer'} wird mit dem Feldwert überschrieben.`
-  const timeHint = `Default-Settings: ${getLocalStorage('time') || 'leer'} wird mit dem Feldwert überschrieben.`
-  const placeHint = `Default-Settings: ${getLocalStorage('place') || 'leer'} wird mit dem Feldwert überschrieben.`
-
-  document.getElementById('saveChapter').setAttribute('data-hint', chapterHint)
-  document.getElementById('saveTwoLines').setAttribute('data-hint', twoLinesHint)
-  document.getElementById('saveDate').setAttribute('data-hint', dateHint)
-  document.getElementById('saveTime').setAttribute('data-hint', timeHint)
-  document.getElementById('savePlace').setAttribute('data-hint', placeHint)
-}
-
 function updatePlaceholders() {
   const chapterInput = document.getElementById('chapter')
   const twoLinesInput = document.getElementById('twoLines')
@@ -682,7 +678,6 @@ function updatePlaceholders() {
 
 function setLocalStorage(name, value) {
   localStorage.setItem(name, value)
-  updateHints()
   updatePlaceholders()
 }
 
@@ -724,6 +719,6 @@ function loadTimeSettings() {
 }
 
 function hasUmlaut(text) {
-  const umlautRegex = /[äöüÄÖÜ]/
-  return umlautRegex.test(text)
+  const diacriticAboveRegex = /[\u0300-\u034F]/
+  return diacriticAboveRegex.test(text.normalize('NFD'))
 }
