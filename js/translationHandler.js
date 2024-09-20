@@ -70,3 +70,20 @@ function applyTranslation(lang) {
 
   document.querySelector('#tooltip p strong').textContent = translation.contact
 }
+
+function getTranslation(keyString) {
+  const lang = localStorage.getItem('selectedLanguage') || 'de'
+
+  const keys = keyString.split('.')
+
+  let translation = translations[lang]
+
+  for (const key of keys) {
+    if (translation[key] === undefined) {
+      return undefined
+    }
+    translation = translation[key]
+  }
+
+  return translation
+}

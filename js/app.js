@@ -119,15 +119,15 @@ document.getElementById('setTemplateBtn').addEventListener('click', function () 
         generateImage(() => {})
         document.getElementById('templateLink').value = ''
       } else {
-        showError('Das Bild muss genau 1665x1665 Pixel groß sein.')
+        showError(getTranslation('error.image.size'))
       }
     }
 
     img.onerror = function () {
-      showError('Fehler beim Laden des Bildes. Bitte überprüfe den Link.')
+      showError(getTranslation('error.image.load'))
     }
   } else {
-    showError('Bitte gib eine gültige URL ein.')
+    showError(getTranslation('error.noUrl'))
   }
 })
 
@@ -163,13 +163,13 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
   let arcLink = document.getElementById('arcLink').value.trim()
 
   if (!arcLink) {
-    showError('Bitte gib eine gültige URL ein.')
+    showError(getTranslation('error.noUrl'))
     return
   }
 
   const validUrlPattern = /^https:\/\/animalrightscalendar\.org\/(events|api\/events)\/[a-zA-Z0-9]{24}$/
   if (!validUrlPattern.test(arcLink)) {
-    showError('Bitte gib eine gültige ARC-URL eines Events ein.')
+    showError(getTranslation('error.arc.url'))
     return
   }
 
@@ -231,9 +231,9 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
     })
     .catch(error => {
       if (error.message === 'Failed to fetch') {
-        showError('CORS-Fehler: Bitte aktiviere temporären Zugriff unter https://cors-anywhere.herokuapp.com/corsdemo.')
+        showError(getTranslation('error.arc.cors'))
       } else {
-        showError('Fehler beim Abrufen der API. Bitte überprüfe den Link.')
+        showError(getTranslation('error.arc.unknown'))
       }
       resetFields()
       console.error('Fehler beim Abrufen der API:', error)
@@ -421,7 +421,7 @@ function generateImage(onComplete) {
           const chapterParts = splitTextInTwoLines(chapter)
           drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
         } else {
-          if (hasUmlaut(chapter)) {
+          if (hasDiacriticAbove(chapter)) {
             chapterYPosition += 25
           }
           const chapterAdjustment = adjustFontSize(context, chapter, maxTextWidth, maxFontSize, font, chapterYPosition)
@@ -505,11 +505,11 @@ function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth,
   let adjustedYPositionLine1 = chapterYPosition
   let adjustedYPositionLine2 = chapterYPosition + line1Height + 10
 
-  if (hasUmlaut(chapterParts[0])) {
+  if (hasDiacriticAbove(chapterParts[0])) {
     adjustedYPositionLine1 += 20
   }
 
-  if (hasUmlaut(chapterParts[1])) {
+  if (hasDiacriticAbove(chapterParts[1])) {
     adjustedYPositionLine2 += 20
   }
 
@@ -718,7 +718,7 @@ function loadTimeSettings() {
   document.getElementById('endTimePopup').value = savedEndTime
 }
 
-function hasUmlaut(text) {
+function hasDiacriticAbove(text) {
   const diacriticAboveRegex = /[\u0300-\u034F]/
   return diacriticAboveRegex.test(text.normalize('NFD'))
 }
