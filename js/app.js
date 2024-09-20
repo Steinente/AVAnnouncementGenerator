@@ -176,10 +176,12 @@ document.getElementById('arcFillBtn').addEventListener('click', () => {
   const eventId = arcLink.split('/').pop()
   const apiLink = `https://animalrightscalendar.org/api/events/${eventId}`
 
-  let proxiedApiLink = apiLink
+  let proxyUrl = 'https://thingproxy.freeboard.io/fetch/'
+  if (window.location.protocol === 'file:') {
+    proxyUrl = 'https://api.allorigins.win/get?url='
+  }
 
-  const proxyUrl = 'https://api.allorigins.win/get?url='
-  proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
+  const proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
 
   resetFields()
 
