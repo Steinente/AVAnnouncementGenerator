@@ -159,7 +159,7 @@ document.getElementById('helpIcon').addEventListener('click', () => {
   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block'
 })
 
-document.getElementById('modalFillBtn').addEventListener('click', () => {
+document.getElementById('arcFillBtn').addEventListener('click', () => {
   let arcLink = document.getElementById('arcLink').value.trim()
 
   if (!arcLink) {
@@ -178,14 +178,12 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
 
   let proxiedApiLink = apiLink
 
-  if (window.location.protocol === 'file:') {
-    const proxyUrl = 'https://api.allorigins.win/get?url='
-    proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
-  }
+  const proxyUrl = 'https://api.allorigins.win/get?url='
+  proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
 
   resetFields()
 
-  document.getElementById('modalFillBtn').disabled = true
+  document.getElementById('arcFillBtn').disabled = true
 
   fetch(proxiedApiLink)
     .then(response => {
@@ -239,7 +237,7 @@ document.getElementById('modalFillBtn').addEventListener('click', () => {
       console.error('Fehler beim Abrufen der API:', error)
     })
     .finally(() => {
-      document.getElementById('modalFillBtn').disabled = false
+      document.getElementById('arcFillBtn').disabled = false
     })
 })
 

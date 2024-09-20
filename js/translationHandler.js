@@ -57,7 +57,7 @@ function applyTranslation(lang) {
   document.getElementById('resetTemplateOption').textContent = translation.resetTemplate
 
   document.getElementById('arcBtn').textContent = translation.fillArc
-  document.getElementById('modalFillBtn').textContent = translation.fill
+  document.getElementById('arcFillBtn').textContent = translation.fill
   document.getElementById('updateBtn').textContent = translation.updatePreview
   document.getElementById('downloadBtn').textContent = translation.download
   document.getElementById('setTemplateBtn').textContent = translation.set
