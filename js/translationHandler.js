@@ -13,6 +13,7 @@ document.querySelectorAll('.dropdown-content a').forEach(langLink => {
     localStorage.setItem('selectedLanguage', selectedLang)
 
     applyTranslation(selectedLang)
+    generateImage(() => {})
 
     const menu = document.getElementById('languageMenu')
     menu.style.display = 'none'

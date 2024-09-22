@@ -143,14 +143,6 @@ function resetCanvasTemplate() {
 
   localStorage.removeItem('templateLink')
 
-  const img = new Image()
-  if (window.location.protocol === 'file:') {
-    img.crossOrigin = 'anonymous'
-    img.src = 'https://i.imgur.com/noMa6R2.jpeg'
-  } else {
-    img.src = 'img/template.jpeg'
-  }
-
   generateImage(() => {})
 }
 
@@ -390,9 +382,7 @@ function generateImage(onComplete) {
       const place = placeInput.trim() ? placeInput.toUpperCase().trim() : getLocalStorage('place').toUpperCase() || ''
 
       const img = new Image()
-      const storedTemplateLink =
-        getLocalStorage('templateLink') ||
-        (window.location.protocol === 'file:' ? 'https://i.imgur.com/noMa6R2.jpeg' : 'img/template.jpeg')
+      const storedTemplateLink = getLocalStorage('templateLink') || getTranslation('defaultTemplateUrl')
       img.crossOrigin = 'anonymous'
       img.src = storedTemplateLink
 

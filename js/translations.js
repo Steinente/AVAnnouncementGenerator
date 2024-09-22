@@ -45,6 +45,7 @@ const translations = {
       },
       noUrl: 'Bitte gib eine gültige URL ein.',
     },
+    defaultTemplateUrl: 'https://i.imgur.com/nV7Kcuf.png',
   },
   en: {
     title: 'AV Announcement Generator',
@@ -92,6 +93,7 @@ const translations = {
       },
       noUrl: 'Please provide a valid URL.',
     },
+    defaultTemplateUrl: 'https://i.imgur.com/nV7Kcuf.png', // german link
   },
   fr: {
     title: "Générateur d'Annonces AV",
@@ -139,5 +141,6 @@ const translations = {
       },
       noUrl: 'Veuillez fournir une URL valide.',
     },
+    defaultTemplateUrl: 'https://i.imgur.com/Iz8tgoO.png',
   },
 }
