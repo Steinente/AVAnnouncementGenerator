@@ -1,0 +1,3 @@
+updateBtn.addEventListener('click', () => {
+  generateImage(() => {})
+})

@@ -8,87 +8,87 @@
     <link rel="icon" type="image/svg+xml" href="img/AV.svg" />
   </head>
   <body>
-    <div class="gray-stripe"></div>
+    <div class="grayStripe"></div>
 
     <h1 class="title">
       AV Ankündigungsgenerator
-      <span class="translate-icon"
+      <span id='translateIcon'
         >&#127760;
-        <div class="dropdown-content" id="languageMenu">
-          <a href="#" data-lang="de"><img src="img/lang/de.png" alt="DE" class="flag-icon" /> Deutsch</a>
-          <a href="#" data-lang="en"><img src="img/lang/gb.png" alt="EN" class="flag-icon" /> English</a>
-          <a href="#" data-lang="fr"><img src="img/lang/fr.png" alt="FR" class="flag-icon" /> Français</a>
+        <div class="dropdownContent" id="languageMenu">
+          <a href="#" data-lang="de"><img src="img/lang/de.png" alt="DE" class="flagIcon" /> Deutsch</a>
+          <a href="#" data-lang="en"><img src="img/lang/gb.png" alt="EN" class="flagIcon" /> English</a>
+          <a href="#" data-lang="fr"><img src="img/lang/fr.png" alt="FR" class="flagIcon" /> Français</a>
         </div>
       </span>
     </h1>
 
     <div class="container">
-      <div class="grid-container">
+      <div class="gridContainer">
         <!-- Chapter -->
-        <div class="grid-item">
+        <div class="gridItem">
           <label for="chapter">Chapter</label>
         </div>
-        <div class="grid-item">
+        <div class="gridItem">
           <input type="text" id="chapter" />
         </div>
-        <div class="grid-item">
-          <span class="save-icon" id="saveChapter" data-hint="Speichern">&#128190;</span>
+        <div class="gridItem">
+          <span class="saveIcon" id="saveChapter" data-hint="Speichern">&#128190;</span>
         </div>
 
         <!-- Two lines -->
-        <div class="grid-item">
+        <div class="gridItem">
           <label for="twoLines">Chapter zweizeilig</label>
         </div>
-        <div class="grid-item">
+        <div class="gridItem">
           <input type="checkbox" id="twoLines" />
         </div>
-        <div class="grid-item">
-          <span class="save-icon" id="saveTwoLines" data-hint="Speichern">&#128190;</span>
+        <div class="gridItem">
+          <span class="saveIcon" id="saveTwoLines" data-hint="Speichern">&#128190;</span>
         </div>
 
         <!-- Date -->
-        <div class="grid-item">
+        <div class="gridItem">
           <label for="date">Datum</label>
         </div>
-        <div class="grid-item">
-          <div class="date-input-wrapper">
+        <div class="gridItem">
+          <div class="dateInputWrapper">
             <input type="text" id="date" />
-            <span class="date-picker-icon" id="datePickerIcon">&#x1F4C5;</span>
-            <input type="date" id="hiddenDatePicker" class="date-hidden" />
+            <span class="datePickerIcon" id="datePickerIcon">&#x1F4C5;</span>
+            <input type="date" id="hiddenDatePicker" class="dateHidden" />
           </div>
         </div>
-        <div class="grid-item">
-          <span class="save-icon" id="saveDate" data-hint="Speichern">&#128190;</span>
+        <div class="gridItem">
+          <span class="saveIcon" id="saveDate" data-hint="Speichern">&#128190;</span>
         </div>
 
         <!-- Time -->
-        <div class="grid-item">
+        <div class="gridItem">
           <label for="time">Zeit</label>
         </div>
-        <div class="grid-item">
-          <div class="time-input-wrapper">
+        <div class="gridItem">
+          <div class="timeInputWrapper">
             <input type="text" id="time" />
-            <span class="time-picker-icon" id="timePickerIcon">&#x1F551;</span>
+            <span class="timePickerIcon" id="timePickerIcon">&#x1F551;</span>
           </div>
         </div>
-        <div class="grid-item">
-          <span class="save-icon" id="saveTime" data-hint="Speichern">&#128190;</span>
+        <div class="gridItem">
+          <span class="saveIcon" id="saveTime" data-hint="Speichern">&#128190;</span>
         </div>
 
         <!-- Place -->
-        <div class="grid-item">
+        <div class="gridItem">
           <label for="place">Veranstaltungsort</label>
         </div>
-        <div class="grid-item">
+        <div class="gridItem">
           <input type="text" id="place" />
         </div>
-        <div class="grid-item">
-          <span class="save-icon" id="savePlace" data-hint="Speichern">&#128190;</span>
+        <div class="gridItem">
+          <span class="saveIcon" id="savePlace" data-hint="Speichern">&#128190;</span>
         </div>
       </div>
 
       <!-- Buttons -->
-      <div class="button-container">
+      <div class="buttonContainer">
         <button id="arcBtn">Aus ARC füllen</button>
         <button id="updateBtn">Update Vorschau</button>
         <button id="downloadBtn">Download</button>
@@ -96,14 +96,14 @@
     </div>
 
     <!-- Image -->
-    <div id="canvas-container">
+    <div id="canvasContainer">
       <canvas id="canvas"></canvas>
     </div>
 
     <div id="output"></div>
 
     <!-- Help icon -->
-    <div class="help-icon" id="helpIcon">
+    <div class="helpIcon" id="helpIcon">
       <span>?</span>
       <div class="tooltip" id="tooltip">
         <p><strong>Kontakt</strong></p>
@@ -121,7 +121,7 @@
 
     <!-- ARC modal -->
     <div id="arcModal" class="modal">
-      <div class="modal-content">
+      <div class="modalContent">
         <span class="close">&times;</span>
         <label for="arcLink">ARC Event-Link</label>
         <input
@@ -136,7 +136,7 @@
 
     <!-- Template modal -->
     <div id="templateModal" class="modal">
-      <div class="modal-content">
+      <div class="modalContent">
         <span class="close">&times;</span>
         <label for="templateLink">Template-Link</label>
         <input type="text" id="templateLink" placeholder="https://example.com/template.jpg" />
@@ -146,19 +146,19 @@
     </div>
 
     <!-- Error message -->
-    <div id="errorMessage" class="error-message">
-      <span class="close-error">&times;</span>
+    <div id="errorMessage" class="errorMessage">
+      <span class="close">&times;</span>
       <p id="errorText"></p>
     </div>
 
     <!-- Time picker -->
-    <div id="timePickerPopup" class="time-picker-popup">
-      <div class="time-field-wrapper">
+    <div id="timePickerPopup" class="timePickerPopup">
+      <div class="timeFieldWrapper">
         <label for="startTimePopup">Von</label>
         <select id="startTimePopup"></select>
       </div>
 
-      <div class="time-field-wrapper">
+      <div class="timeFieldWrapper">
         <label for="endTimePopup">Bis</label>
         <select id="endTimePopup"></select>
       </div>
@@ -167,14 +167,28 @@
     </div>
 
     <!-- Canvas Context Menu -->
-    <div id="contextMenu" class="context-menu">
+    <div id="contextMenu" class="contextMenu">
       <div id="changeTemplateOption">Template ändern</div>
       <div id="resetTemplateOption">Template zurücksetzen</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/elements.js"></script>
+    <script src="js/localStorageHandler.js"></script>
     <script src="js/translationHandler.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/chapterHandler.js"></script>
+    <script src="js/dateHandler.js"></script>
+    <script src="js/dateHandler.js"></script>
+    <script src="js/timeHandler.js"></script>
+    <script src="js/placeHandler.js"></script>
+    <script src="js/arcHandler.js"></script>
+    <script src="js/updateHandler.js"></script>
+    <script src="js/downloadHandler.js"></script>
+    <script src="js/imageHandler.js"></script>
+    <script src="js/templateHandler.js"></script>
+    <script src="js/errorHandler.js"></script>
+    <script src="js/helpHandler.js"></script>
+    <script src="js/general.js"></script>
   </body>
 </html>

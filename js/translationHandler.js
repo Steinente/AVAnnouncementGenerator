@@ -1,43 +1,41 @@
-document.querySelector('.translate-icon').addEventListener('click', function (event) {
-  const menu = document.getElementById('languageMenu')
-  event.stopPropagation()
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block'
+translateIcon.addEventListener('click', e => {
+  e.stopPropagation()
+  languageMenu.style.display = languageMenu.style.display === 'block' ? 'none' : 'block'
 })
 
-document.querySelectorAll('.dropdown-content a').forEach(langLink => {
+languageMenu.querySelectorAll('a').forEach(langLink => {
   langLink.addEventListener('click', function (e) {
     e.preventDefault()
 
     const selectedLang = this.getAttribute('data-lang')
-
-    localStorage.setItem('selectedLanguage', selectedLang)
-
+    setLocalStorage('selectedLanguage', selectedLang)
     applyTranslation(selectedLang)
+
     generateImage(() => {})
 
-    const menu = document.getElementById('languageMenu')
-    menu.style.display = 'none'
+    languageMenu.style.display = 'none'
 
     e.stopPropagation()
   })
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const savedLanguage = localStorage.getItem('selectedLanguage')
+  const savedLanguage = getLocalStorage('selectedLanguage')
 
   if (savedLanguage) {
     applyTranslation(savedLanguage)
   }
 })
 
-document.addEventListener('click', function (event) {
-  const menu = document.getElementById('languageMenu')
-  const translateIcon = document.querySelector('.translate-icon')
-
-  if (!translateIcon.contains(event.target) && !menu.contains(event.target)) {
-    menu.style.display = 'none'
+document.addEventListener('click', event => {
+  if (!translateIcon.contains(event.target) && !languageMenu.contains(event.target)) {
+    languageMenu.style.display = 'none'
   }
 })
+
+function getCurrentLanguage() {
+  return localStorage.getItem('selectedLanguage') || 'de'
+}
 
 function applyTranslation(lang) {
   const translation = translations[lang]
@@ -54,32 +52,28 @@ function applyTranslation(lang) {
   document.querySelector('label[for="arcLink"]').textContent = translation.arcLink
   document.querySelector('label[for="templateLink"]').textContent = translation.templateLink
 
-  document.getElementById('changeTemplateOption').textContent = translation.changeTemplate
-  document.getElementById('resetTemplateOption').textContent = translation.resetTemplate
+  changeTemplateOption.textContent = translation.changeTemplate
+  resetTemplateOption.textContent = translation.resetTemplate
 
-  document.getElementById('arcBtn').textContent = translation.fillArc
-  document.getElementById('arcFillBtn').textContent = translation.fill
-  document.getElementById('updateBtn').textContent = translation.updatePreview
-  document.getElementById('downloadBtn').textContent = translation.download
-  document.getElementById('setTemplateBtn').textContent = translation.set
+  arcBtn.textContent = translation.fillArc
+  arcFillBtn.textContent = translation.fill
+  updateBtn.textContent = translation.updatePreview
+  downloadBtn.textContent = translation.download
+  setTemplateBtn.textContent = translation.set
 
-  document.getElementById('saveChapter').setAttribute('data-hint', translation.save)
-  document.getElementById('saveTwoLines').setAttribute('data-hint', translation.save)
-  document.getElementById('saveDate').setAttribute('data-hint', translation.save)
-  document.getElementById('saveTime').setAttribute('data-hint', translation.save)
-  document.getElementById('savePlace').setAttribute('data-hint', translation.save)
+  saveChapter.setAttribute('data-hint', translation.save)
+  saveTwoLines.setAttribute('data-hint', translation.save)
+  saveDate.setAttribute('data-hint', translation.save)
+  saveTime.setAttribute('data-hint', translation.save)
+  savePlace.setAttribute('data-hint', translation.save)
 
   document.querySelector('#tooltip p strong').textContent = translation.contact
 }
 
 function getTranslation(keyString) {
-  const lang = localStorage.getItem('selectedLanguage') || 'de'
+  let translation = translations[getCurrentLanguage()]
 
-  const keys = keyString.split('.')
-
-  let translation = translations[lang]
-
-  for (const key of keys) {
+  for (const key of keyString.split('.')) {
     if (translation[key] === undefined) {
       return undefined
     }

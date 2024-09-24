@@ -1,0 +1,3 @@
+savePlace.addEventListener('click', () => {
+  updatePlaceLocalStorage()
+})

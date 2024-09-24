@@ -37,13 +37,17 @@ const translations = {
       image: {
         size: 'Das Bild muss genau 1665x1665 Pixel groß sein.',
         load: 'Fehler beim Laden des Bildes. Bitte überprüfe den Link.',
+        font: 'Fehler beim Laden der Schriftart',
       },
       arc: {
         url: 'Bitte gib eine gültige ARC-URL eines Events ein.',
         cors: 'CORS-Fehler: Bitte aktiviere temporären Zugriff unter https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Fehler beim Abrufen der API. Bitte überprüfe den Link.',
+        data: 'Ungültige oder unvollständige Daten von der API erhalten.',
+        api: 'Fehler beim Abrufen der API',
       },
       noUrl: 'Bitte gib eine gültige URL ein.',
+      status: 'Fehlerstatus',
     },
     defaultTemplateUrl: 'https://i.imgur.com/nV7Kcuf.png',
   },
@@ -85,13 +89,17 @@ const translations = {
       image: {
         size: 'The image must be exactly 1665x1665 pixels in size.',
         load: 'Error loading the image. Please check the link.',
+        font: 'Error loading font',
       },
       arc: {
         url: 'Please provide a valid ARC event URL.',
         cors: 'CORS error: Please enable temporary access at https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Error fetching the API. Please check the link.',
+        data: 'Invalid or incomplete data received from the API.',
+        api: 'Error retrieving API',
       },
       noUrl: 'Please provide a valid URL.',
+      status: 'Error status',
     },
     defaultTemplateUrl: 'https://i.imgur.com/nV7Kcuf.png', // german link
   },
@@ -133,13 +141,17 @@ const translations = {
       image: {
         size: "L'image doit mesurer exactement 1665x1665 pixels.",
         load: "Erreur lors du chargement de l'image. Veuillez vérifier le lien.",
+        font: 'Erreur de chargement de la police',
       },
       arc: {
         url: "Veuillez fournir une URL d'événement ARC valide.",
         cors: "Erreur CORS : Veuillez activer l'accès temporaire à l'adresse https://cors-anywhere.herokuapp.com/corsdemo.",
         unknown: "Erreur lors de la récupération de l'API. Veuillez vérifier le lien.",
+        data: "Données invalides ou incomplètes reçues de l'API.",
+        api: "Échec de l'obtention de l'API",
       },
       noUrl: 'Veuillez fournir une URL valide.',
+      status: "Statut d'erreur",
     },
     defaultTemplateUrl: 'https://i.imgur.com/Iz8tgoO.png',
   },
