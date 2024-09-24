@@ -34,9 +34,7 @@ function updateStartTimeLocalStorage(update = true) {
 }
 
 function updateEndTimeLocalStorage() {
-  if (endTimePopup.value !== '18:00') {
-    setLocalStorage('endTime', endTimePopup.value !== '18:00' ? endTimePopup.value : '')
-  }
+  setLocalStorage('endTime', endTimePopup.value !== '18:00' ? endTimePopup.value : '')
 }
 
 function updatePlaceLocalStorage() {
