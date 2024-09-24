@@ -8,7 +8,7 @@ languageMenu.querySelectorAll('a').forEach(langLink => {
     e.preventDefault()
 
     const selectedLang = this.getAttribute('data-lang')
-    setLocalStorage('selectedLanguage', selectedLang)
+    setLocalStorage('selectedLanguage', selectedLang, false)
     applyTranslation(selectedLang)
 
     generateImage(() => {})
@@ -67,7 +67,7 @@ function applyTranslation(lang) {
   saveTime.setAttribute('data-hint', translation.save)
   savePlace.setAttribute('data-hint', translation.save)
 
-  document.querySelector('#tooltip p strong').textContent = translation.contact
+  tooltip.querySelector('p strong').textContent = translation.contact
 }
 
 function getTranslation(keyString) {
