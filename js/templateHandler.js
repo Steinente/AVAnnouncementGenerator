@@ -39,6 +39,12 @@ resetTemplateOption.addEventListener('click', () => {
   contextMenu.style.display = 'none'
 })
 
+useIcdTemplate.addEventListener('click', () => {
+  templateLink.value = 'https://i.imgur.com/uYFvA8r.jpeg'
+  updateTemplateLinkLocalStorage()
+  generateImage(() => {})
+})
+
 document.querySelector('#templateModal .close').addEventListener('click', () => {
   templateModal.style.display = 'none'
 })
