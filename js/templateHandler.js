@@ -40,8 +40,9 @@ resetTemplateOption.addEventListener('click', () => {
 })
 
 useIcdTemplate.addEventListener('click', () => {
-  templateLink.value = 'https://i.imgur.com/uYFvA8r.jpeg'
+  templateLink.value = 'https://i.imgur.com/2Di2fpR.png'
   updateTemplateLinkLocalStorage()
+  templateLink.value = ''
   generateImage(() => {})
 })
 
