@@ -47,7 +47,7 @@ function generateImage(onComplete) {
   loadFonts(maxFontSize)
     .then(() => {
       const chapterValue = (chapter.value ? chapter.value : getLocalStorage('chapter')).toUpperCase() || ''
-      const twoLinesValue = chapter.value ? twoLines.checked : getLocalStorage('twoLines') === 'true'
+      const twoLinesValue = twoLines.checked ? twoLines.checked : getLocalStorage('twoLines') === 'true'
       const dateValue = (formatDate(date.value) || getLocalStorage('date')).toUpperCase() || ''
       const timeValue = (time.value ? time.value : getLocalStorage('time')).toUpperCase() || ''
       const placeValue = (place.value ? place.value : getLocalStorage('place')).toUpperCase() || ''
