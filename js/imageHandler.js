@@ -138,9 +138,13 @@ function generateImage(onComplete) {
 }
 
 function splitTextInTwoLines(text) {
-  const words = text.split(/[\s-]+/)
-  const middle = Math.ceil(words.length / 2)
-  return [words.slice(0, middle).join(' '), words.slice(middle).join(' ')]
+  if (text.includes('//')) {
+    return text.split('//').map(part => part.trim())
+  } else {
+    const words = text.split(/[\s-]+/)
+    const middle = Math.ceil(words.length / 2)
+    return [words.slice(0, middle).join(' ').trim(), words.slice(middle).join(' ').trim()]
+  }
 }
 
 function drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition) {
