@@ -1,8 +1,10 @@
 function setLocalStorage(name, value, update = true) {
   if (!value) {
     localStorage.removeItem(name)
-  } else {
+  } else if (typeof value === 'string') {
     localStorage.setItem(name, value.trim())
+  } else {
+    localStorage.setItem(name, value)
   }
   if (update) {
     updatePlaceholders()
