@@ -1,3 +1,5 @@
+GERMAN:
+
 # AV Announcement Generator
 
 Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem du Ankündigungen für AV Cubes direkt auf deinem Computer oder Smartphone erstellen kannst.
@@ -53,3 +55,62 @@ Der **AV Announcement Generator** ist ein einfach zu bedienendes Tool, mit dem d
 
 - Wenn die Anwendung lokal ausgeführt wird und nicht auf einem Server, blockieren die meisten Webseiten den Zugriff auf ihre Daten. Um dieses Problem zu umgehen, gibt es Dienste, die die Anfrage über ihre Server umleiten und so den Zugriff ermöglichen. Auch der ARC blockiert Anfragen von lokalen Maschinen.
 - Um diese Einschränkung zu umgehen, besuche die Webseite **[cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)** und klicke auf **Request temporary access to the demo server*. Dadurch erhältst du vorübergehend die Möglichkeit, Daten vom ARC abzufragen.
+
+-----------------------------------------------
+ENGLISH:
+
+# AV Announcement Generator
+
+The **AV Announcement Generator** is an easy-to-use tool that allows you to create announcements for AV Cubes directly on your computer or smartphone.
+
+## Features
+
+- **Manual Entry**: Simply enter the necessary information in the fields.
+- **Auto-fill**: Enter the link of an AnimalRightsCalendar event, and the fields will be filled in automatically.
+- **Preview and Download**: View the completed announcement as a preview or download it directly as an image file.
+- **Save Default Values**: You can save frequently used data, like the location, as default values, so you don’t have to enter them every time.
+- **Smartphone Compatibility**: The application works not only on computers but also on smartphones, so you can conveniently create announcements on the go.
+
+## Instructions
+
+### 1. Manual Entry
+
+1. Open the website **[AVAnnouncementGenerator](https://steinente.github.io/AVAnnouncementGenerator/)**.
+2. You will see five fields:
+   - **Chapter**: Enter the chapter.
+   - **Two-line Chapter**: Choose if the chapter should be displayed in two lines.
+   - **Date**: Enter the date of the Cubes.
+   - **Time**: Enter the start and end times of the Cubes.
+   - **Location**: Enter the location of the event.
+3. Click **Preview** to display the announcement.
+4. Click **Download** to download the announcement as an image file.
+
+### 2. Auto-fill Fields
+
+1. Copy the link of an event from the **[AnimalRightsCalendar](https://animalrightscalendar.org/)** website.
+2. Click **Fill from ARC**.
+3. Paste this link into the “ARC Event Link” field.
+4. Click **Fill** – the fields will automatically populate with the event’s information.
+
+### 3. Customize Default Values
+
+1. Enter a value in one of the fields.
+2. To the right of the field, there is a save icon – click it to save the current value as a default.
+3. These default values will then be displayed as placeholders in the corresponding fields. If the fields are left unfilled, the placeholders will be used in the preview and download. This way, you only need to change the date if the other fields remain the same.
+
+### 4. Unique File Naming
+
+- When you download an announcement, it is automatically saved with a unique filename that includes information like the location and date. This prevents files from being overwritten and makes announcements easier to find.
+
+## Compatibility
+
+- The **AV Announcement Generator** works on both **computers** and **smartphones**. You can open the application in your web browser and conveniently create and download announcements from anywhere.
+
+## Requirements
+
+- No special programs or servers are needed.
+
+## Local Execution (For Nerds Only)
+
+- When running the application locally, most websites block access to their data. To bypass this, some services route requests through their servers to allow access. ARC also blocks requests from local machines.
+- To bypass this restriction, visit **[cors-anywhere.herokuapp.com/corsdemo](https://cors-anywhere.herokuapp.com/corsdemo)** and click on **Request temporary access to the demo server**. This grants temporary access to query data from ARC.
