@@ -205,6 +205,6 @@ const translations = {
       noUrl: 'Please provide a valid URL.',
       status: 'Error status',
     },
-    defaultTemplateUrl: 'img/templates/template_nl.png',
+    defaultTemplateUrl: 'https://i.imgur.com/MB0YWTa.png',
   },
 }
