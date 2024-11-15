@@ -60,6 +60,7 @@ function applyTranslation(lang) {
   updateBtn.textContent = translation.updatePreview
   downloadBtn.textContent = translation.download
   setTemplateBtn.textContent = translation.set
+  setTimeBtn.textContent = translation.set
 
   saveChapter.setAttribute('data-hint', translation.save)
   saveTwoLines.setAttribute('data-hint', translation.save)
