@@ -36,7 +36,7 @@ function formatTime(startTime = startTimePopup.value, endTime = endTimePopup.val
       const endFrench = endTime.replace(':', ' h ')
       return `${startFrench} - ${endFrench}`
     } else if (getCurrentLanguage() === 'nl') {
-      return `${startDutch} - ${endDutch}`
+      return `${startTime} - ${endTime}`
     }
   }
   return undefined
