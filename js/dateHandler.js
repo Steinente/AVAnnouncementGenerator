@@ -26,20 +26,26 @@ function formatDate(dateString) {
 }
 
 function convertMonth(dateString, lang, toNumber = true) {
-  const dateParts = dateString.split('.')
-  const day = dateParts[0]
-  const month = dateParts[1]
-  const year = dateParts[2]
+  const [day, month, year] = dateString.split('.').map(part => part.padStart(2, '0'))
 
   if (toNumber) {
-    if (lang === 'de' || lang === 'fr') {
-      return `${day.padStart(2, '0')}.${month.padStart(2, '0')}.${year}`
-    } else if (lang === 'en') {
-      return `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`
+    const dateFormats = {
+      default: `${year}-${month}-${day}`,
+      de: `${day}.${month}.${year}`,
+      fr: `${day}.${month}.${year}`,
+      en: `${month}/${day}/${year}`,
+      es: `${day}/${month}/${year}`,
+      it: `${day}/${month}/${year}`,
+      pt: `${day}/${month}/${year}`,
+      nl: `${day}-${month}-${year}`,
     }
+
+    return dateFormats[lang] || dateFormats.default
   } else {
-    const months = translations[lang].months
-    const monthNumbers = {
+    const months = translations[lang]?.months
+    if (!months) return `${year}-${month}-${day}`
+
+    const monthNames = {
       '01': months.january,
       '02': months.february,
       '03': months.march,
@@ -54,15 +60,17 @@ function convertMonth(dateString, lang, toNumber = true) {
       12: months.december,
     }
 
-    if (lang === 'de') {
-      return `${day}. ${monthNumbers[month]} ${year}`
-    } else if (lang === 'en') {
-      return `${monthNumbers[month]} ${parseInt(day)}, ${year}`
-    } else if (lang === 'fr') {
-      const formattedDay = day === '01' ? '1er' : parseInt(day)
-      return `${formattedDay} ${monthNumbers[month]} ${year}`
+    const textualFormats = {
+      default: `${year}-${month}-${day}`,
+      de: `${parseInt(day)}. ${monthNames[month]} ${year}`,
+      en: `${monthNames[month]} ${parseInt(day)}, ${year}`,
+      fr: `${day === '01' ? '1er' : parseInt(day)} ${monthNames[month]} ${year}`,
+      es: `${parseInt(day)} de ${monthNames[month]} de ${year}`,
+      it: `${parseInt(day)} ${monthNames[month]} ${year}`,
+      pt: `${parseInt(day)} de ${monthNames[month]} de ${year}`,
+      nl: `${parseInt(day)} ${monthNames[month]} ${year}`,
     }
-  }
 
-  return dateString
+    return textualFormats[lang] || textualFormats.default
+  }
 }
