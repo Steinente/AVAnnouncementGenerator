@@ -153,7 +153,7 @@ const translations = {
       noUrl: 'Por favor, proporciona una URL válida.',
       status: 'Estado de error',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/qf1hdg9.png',
+    defaultTemplateUrl: 'https://i.imgur.com/GVkY97B.png',
   },
   fr: {
     title: "Générateur d'Annonces AV",
