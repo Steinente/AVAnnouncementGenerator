@@ -26,14 +26,17 @@ saveTime.addEventListener('click', () => {
 function formatTime(startTime = startTimePopup.value, endTime = endTimePopup.value) {
   if (startTime && endTime) {
     const formats = {
+      default: `${startTime} - ${endTime}`,
+      cs: `${startTime} - ${endTime} hodin`,
       de: `${startTime} - ${endTime} Uhr`,
       en: `${convertTo12HourFormat(startTime)} - ${convertTo12HourFormat(endTime)}`,
       es: `${startTime} h - ${endTime} h`,
       fr: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
+      fro: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
       pt: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
     }
 
-    return formats[getCurrentLanguage()] || `${startTime} - ${endTime}`
+    return formats[getCurrentLanguage()] || formats.default
   }
   return undefined
 }

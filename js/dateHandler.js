@@ -30,14 +30,12 @@ function convertMonth(dateString, lang, toNumber = true) {
 
   if (toNumber) {
     const dateFormats = {
-      default: `${year}-${month}-${day}`,
-      de: `${day}.${month}.${year}`,
-      fr: `${day}.${month}.${year}`,
+      default: `${day}.${month}.${year}`,
       en: `${month}/${day}/${year}`,
       es: `${day}/${month}/${year}`,
       it: `${day}/${month}/${year}`,
-      pt: `${day}/${month}/${year}`,
       nl: `${day}-${month}-${year}`,
+      pt: `${day}/${month}/${year}`,
     }
 
     return dateFormats[lang] || dateFormats.default
@@ -61,14 +59,14 @@ function convertMonth(dateString, lang, toNumber = true) {
     }
 
     const textualFormats = {
-      default: `${year}-${month}-${day}`,
-      de: `${parseInt(day)}. ${monthNames[month]} ${year}`,
-      en: `${monthNames[month]} ${parseInt(day)}, ${year}`,
-      fr: `${day === '01' ? '1er' : parseInt(day)} ${monthNames[month]} ${year}`,
-      es: `${parseInt(day)} de ${monthNames[month]} de ${year}`,
-      it: `${parseInt(day)} ${monthNames[month]} ${year}`,
-      pt: `${parseInt(day)} de ${monthNames[month]} de ${year}`,
-      nl: `${parseInt(day)} ${monthNames[month]} ${year}`,
+      default: `${day} ${monthNames[month]} ${year}`,
+      cs: `${day}. ${monthNames[month]} ${year}`,
+      de: `${day}. ${monthNames[month]} ${year}`,
+      en: `${monthNames[month]} ${day}, ${year}`,
+      es: `${day} de ${monthNames[month]} de ${year}`,
+      fr: `${day === '01' ? '1er' : day} ${monthNames[month]} ${year}`,
+      fro: `${day === '01' ? '1er' : day} ${monthNames[month]} ${year}`,
+      pt: `${day} de ${monthNames[month]} de ${year}`,
     }
 
     return textualFormats[lang] || textualFormats.default
