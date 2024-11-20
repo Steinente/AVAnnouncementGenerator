@@ -257,7 +257,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/Iz8tgoO.png',
+    defaultTemplateUrl: 'https://i.imgur.com/H9x9XOO.png',
   },
   fr_o: {
     title: "Générateur d'Annonces AV",
@@ -309,7 +309,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/RxHcT3u.png',
   },
   it: {
     title: 'Generatore di Annunci AV',
