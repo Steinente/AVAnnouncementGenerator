@@ -259,7 +259,7 @@ const translations = {
     },
     defaultTemplateUrl: 'https://i.imgur.com/Iz8tgoO.png',
   },
-  fro: {
+  fr_o: {
     title: "Générateur d'Annonces AV",
     chapter: 'Chapitre',
     twoLines: 'Chapitre en deux lignes',

@@ -66,7 +66,7 @@ function convertMonth(dateString, lang, toNumber = true) {
       en: `${monthNames[month]} ${day}, ${year}`,
       es: `${day} de ${monthNames[month]} de ${year}`,
       fr: `${day === '01' ? '1er' : day} ${monthNames[month]} ${year}`,
-      fro: `${day === '01' ? '1er' : day} ${monthNames[month]} ${year}`,
+      fr_o: `${day === '01' ? '1er' : day} ${monthNames[month]} ${year}`,
       pt: `${day} de ${monthNames[month]} de ${year}`,
       zh_hant: `${year}年${monthNames[month]}${day}日`,
     }

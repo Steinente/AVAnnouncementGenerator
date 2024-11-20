@@ -32,7 +32,7 @@ function formatTime(startTime = startTimePopup.value, endTime = endTimePopup.val
       en: `${convertTo12HourFormat(startTime)} - ${convertTo12HourFormat(endTime)}`,
       es: `${startTime} h - ${endTime} h`,
       fr: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
-      fro: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
+      fr_o: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
       pt: `${startTime.replace(':', 'h')} - ${endTime.replace(':', 'h')}`,
     }
 
