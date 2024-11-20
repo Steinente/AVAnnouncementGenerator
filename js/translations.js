@@ -465,7 +465,7 @@ const translations = {
       noUrl: 'Podaj prawidłowy URL.',
       status: 'Status błędu',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/vcLIOqA.png',
   },
   pt: {
     title: 'Gerador de Anúncios AV',
@@ -517,7 +517,7 @@ const translations = {
       noUrl: 'Por favor, forneça um URL válido.',
       status: 'Status do erro',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/vcLIOqA.png',
+    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
   },
   zh_hant: {
     title: 'AV 公告生成器',
