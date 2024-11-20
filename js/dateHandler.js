@@ -4,12 +4,10 @@ datePickerIcon.addEventListener('click', () => {
 
 hiddenDatePicker.addEventListener('change', () => {
   if (hiddenDatePicker.value) {
-    const dateObj = new Date(hiddenDatePicker.value)
-    const day = String(dateObj.getDate()).padStart(2, '0')
-    const monthNumber = String(dateObj.getMonth() + 1).padStart(2, '0')
-    const year = dateObj.getFullYear()
+    const [year, month, day] = hiddenDatePicker.value.split('-')
+    const formattedDate = `${day.padStart(2, '0')}.${month.padStart(2, '0')}.${year}`
 
-    date.value = convertMonth(`${day}.${monthNumber}.${year}`, getCurrentLanguage(), false)
+    date.value = convertMonth(formattedDate, getCurrentLanguage(), false)
   }
 })
 
