@@ -417,8 +417,8 @@ const translations = {
   },
   pl: {
     title: 'Generator Ogłoszeń AV',
-    chapter: 'Rozdział',
-    twoLines: 'Rozdział w dwóch liniach',
+    chapter: 'Oddział',
+    twoLines: 'Oddział w dwóch wersach',
     date: 'Data',
     time: 'Godzina',
     from: 'Od',
