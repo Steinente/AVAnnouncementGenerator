@@ -42,6 +42,8 @@ function applyTranslation(lang) {
 
   document.querySelector('.title').firstChild.textContent = translation.title
 
+  document.querySelector('#templateModal .infoIcon').setAttribute('data-tooltip', translation.error.image.size)
+
   document.querySelector('label[for="chapter"]').textContent = translation.chapter
   document.querySelector('label[for="twoLines"]').textContent = translation.twoLines
   document.querySelector('label[for="date"]').textContent = translation.date

@@ -481,6 +481,47 @@ button:active {
   min-width: 380px;
 }
 
+.infoIcon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px; /* Größe des Kreises */
+  height: 20px;
+  border-radius: 50%; /* Macht es rund */
+  background-color: #007bff; /* Hintergrundfarbe */
+  color: white; /* Textfarbe */
+  font-size: 14px; /* Schriftgröße */
+  font-weight: bold;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Schatten */
+}
+
+.infoIcon::after {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  opacity: 0;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: -40px; /* Position über dem Symbol */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.infoIcon:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
 .errorMessage {
   display: none;
   position: fixed;
