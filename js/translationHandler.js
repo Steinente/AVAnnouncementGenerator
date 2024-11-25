@@ -19,12 +19,15 @@ languageMenu.querySelectorAll('a').forEach(langLink => {
   })
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-  const savedLanguage = getLocalStorage('selectedLanguage') || 'de'
+document.addEventListener('DOMContentLoaded', () => {
+  const languageMap = { 'fr-CA': 'fr_o', 'zh-TW': 'zh_hant' }
+  const supportedLanguages = Array.from(document.querySelectorAll('#languageMenu a'), item => item.dataset.lang)
+  const browserLanguage = languageMap[navigator.language] || navigator.language.split('-')[0]
+  const savedLanguage =
+    getLocalStorage('selectedLanguage') || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'de')
 
-  if (savedLanguage) {
-    applyTranslation(savedLanguage)
-  }
+  setLocalStorage('selectedLanguage', savedLanguage, false)
+  applyTranslation(savedLanguage)
 })
 
 document.addEventListener('click', event => {
