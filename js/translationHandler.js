@@ -20,7 +20,7 @@ languageMenu.querySelectorAll('a').forEach(langLink => {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const savedLanguage = getLocalStorage('selectedLanguage')
+  const savedLanguage = getLocalStorage('selectedLanguage') || 'de'
 
   if (savedLanguage) {
     applyTranslation(savedLanguage)

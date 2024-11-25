@@ -11,7 +11,6 @@
     <div class="grayStripe"></div>
 
     <h1 class="title">
-      AV Ankündigungsgenerator
       <span id="translateIcon"
         >&#127760;
         <div class="dropdownContent" id="languageMenu">
@@ -34,7 +33,7 @@
       <div class="gridContainer">
         <!-- Chapter -->
         <div class="gridItem">
-          <label for="chapter">Chapter</label>
+          <label for="chapter"></label>
         </div>
         <div class="gridItem">
           <input type="text" id="chapter" />
@@ -45,7 +44,7 @@
 
         <!-- Two lines -->
         <div class="gridItem">
-          <label for="twoLines">Chapter zweizeilig</label>
+          <label for="twoLines"></label>
         </div>
         <div class="gridItem">
           <input type="checkbox" id="twoLines" />
@@ -56,7 +55,7 @@
 
         <!-- Date -->
         <div class="gridItem">
-          <label for="date">Datum</label>
+          <label for="date"></label>
         </div>
         <div class="gridItem">
           <div class="dateInputWrapper">
@@ -71,7 +70,7 @@
 
         <!-- Time -->
         <div class="gridItem">
-          <label for="time">Zeit</label>
+          <label for="time"></label>
         </div>
         <div class="gridItem">
           <div class="timeInputWrapper">
@@ -85,7 +84,7 @@
 
         <!-- Place -->
         <div class="gridItem">
-          <label for="place">Veranstaltungsort</label>
+          <label for="place"></label>
         </div>
         <div class="gridItem">
           <input type="text" id="place" />
@@ -97,9 +96,9 @@
 
       <!-- Buttons -->
       <div class="buttonContainer">
-        <button id="arcBtn">Aus ARC füllen</button>
-        <button id="updateBtn">Update Vorschau</button>
-        <button id="downloadBtn">Download</button>
+        <button id="arcBtn"></button>
+        <button id="updateBtn"></button>
+        <button id="downloadBtn"></button>
       </div>
     </div>
 
@@ -114,7 +113,7 @@
     <div class="helpIcon" id="helpIcon">
       <span>?</span>
       <div class="tooltip" id="tooltip">
-        <p><strong>Kontakt</strong></p>
+        <p><strong></strong></p>
         <p>Discord: steinente</p>
         <p>
           Instagram:
@@ -131,14 +130,14 @@
     <div id="arcModal" class="modal">
       <div class="modalContent">
         <span class="close">&times;</span>
-        <label for="arcLink">ARC Event-Link</label>
+        <label for="arcLink"></label>
         <input
           type="text"
           id="arcLink"
           placeholder="https://animalrightscalendar.org/events/6627882f8f48865b9b1c4b1a"
         />
         <br />
-        <button id="arcFillBtn">Füllen</button>
+        <button id="arcFillBtn"></button>
       </div>
     </div>
 
@@ -146,11 +145,11 @@
     <div id="templateModal" class="modal">
       <div class="modalContent">
         <span class="close">&times;</span>
-        <label for="templateLink">Template-Link</label>
-        <span class="infoIcon" data-tooltip="Das Bild muss genau 1665x1665 Pixel groß sein.">?</span>
+        <label for="templateLink"></label>
+        <span class="infoIcon">?</span>
         <input type="text" id="templateLink" placeholder="https://example.com/template.jpg" />
         <br />
-        <button id="setTemplateBtn">Setzen</button>
+        <button id="setTemplateBtn"></button>
       </div>
     </div>
 
@@ -163,22 +162,22 @@
     <!-- Time picker -->
     <div id="timePickerPopup" class="timePickerPopup">
       <div class="timeFieldWrapper">
-        <label for="startTimePopup">Von</label>
+        <label for="startTimePopup"></label>
         <select id="startTimePopup"></select>
       </div>
 
       <div class="timeFieldWrapper">
-        <label for="endTimePopup">Bis</label>
+        <label for="endTimePopup"></label>
         <select id="endTimePopup"></select>
       </div>
 
-      <button id="setTimeBtn">Setzen</button>
+      <button id="setTimeBtn"></button>
     </div>
 
     <!-- Canvas Context Menu -->
     <div id="contextMenu" class="contextMenu">
-      <div id="changeTemplateOption">Template ändern</div>
-      <div id="resetTemplateOption">Template zurücksetzen</div>
+      <div id="changeTemplateOption"></div>
+      <div id="resetTemplateOption"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
