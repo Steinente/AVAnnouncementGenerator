@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const languageMap = { 'fr-CA': 'fr_o', 'zh-TW': 'zh_hant' }
   const supportedLanguages = Array.from(document.querySelectorAll('#languageMenu a'), item => item.dataset.lang)
   const browserLanguage = languageMap[navigator.language] || navigator.language.split('-')[0]
-  const savedLanguage =
-    getLocalStorage('selectedLanguage') || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'de')
+  const matchedLanguage = supportedLanguages.includes(browserLanguage) ? browserLanguage : 'de'
+  const savedLanguage = getLocalStorage('selectedLanguage') || matchedLanguage
 
   setLocalStorage('selectedLanguage', savedLanguage, false)
   applyTranslation(savedLanguage)
