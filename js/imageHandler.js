@@ -78,26 +78,33 @@ function generateImage(onComplete) {
           if (hasDiacriticAbove(chapterValue)) {
             chapterYPosition += 25
           }
-          const chapterAdjustment = adjustFontSize(
-            context,
-            chapterValue,
-            maxTextWidth,
-            maxFontSize,
-            font,
-            chapterYPosition
-          )
-          drawTextWithSpacing(
-            context,
-            chapterValue,
-            chapterPadding,
-            chapterAdjustment.yOffset,
-            maxTextWidth,
-            chapterAdjustment.fontSize,
-            font
-          )
+          if (isAllChinese(chapterValue)) {
+            context.textAlign = 'center'
+            context.font = `${maxFontSize}px "${font}"`
+            context.fillText(chapterValue, canvas.width / 2, chapterYPosition)
+          } else {
+            const chapterAdjustment = adjustFontSize(
+              context,
+              chapterValue,
+              maxTextWidth,
+              maxFontSize,
+              font,
+              chapterYPosition
+            )
+            drawTextWithSpacing(
+              context,
+              chapterValue,
+              chapterPadding,
+              chapterAdjustment.yOffset,
+              maxTextWidth,
+              chapterAdjustment.fontSize,
+              font
+            )
+          }
         }
 
         // Date
+        context.textAlign = 'left'
         context.fillStyle = 'white'
         font = 'SourceSansPro'
         const datePadding = 405
@@ -263,6 +270,11 @@ function closeContextMenu() {
 }
 
 function hasDiacriticAbove(text) {
-  const diacriticAboveRegex = /[\u0300-\u0315\u0363-\u036F\u1E00-\u1EFF]/
+  const diacriticAboveRegex = /[\u0300-\u0315\u0363-\u036F\u1E00-\u1EFF\u4E00-\u9FFF]/
   return diacriticAboveRegex.test(text.normalize('NFD'))
+}
+
+function isAllChinese(text) {
+  const chineseCharRegex = /^[\u4E00-\u9FFF]+$/
+  return chineseCharRegex.test(text)
 }
