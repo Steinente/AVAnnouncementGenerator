@@ -1,16 +1,14 @@
 downloadBtn.addEventListener('click', () => {
   const chapterValue = (chapter.value || getLocalStorage('chapter')).toLowerCase()
   const dateValue = (date.value || getLocalStorage('date')).toLowerCase()
-
   const sanitizedChapter = chapterValue ? chapterValue.replace(/\s+/g, '-') : ''
-  const formattedDate = dateValue ? convertMonth(dateValue, getCurrentLanguage).replace(/\s+/g, '') : ''
 
   let fileName = 'announcement'
   if (sanitizedChapter) {
     fileName += `_${sanitizedChapter}`
   }
-  if (formattedDate) {
-    fileName += `_${formattedDate}`
+  if (dateValue) {
+    fileName += `_${dateValue.replace(/\s+/g, '')}`
   }
   fileName += '.png'
 
