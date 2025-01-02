@@ -49,7 +49,7 @@ const translations = {
       noUrl: 'Zadejte platnou URL.',
       status: 'Chybový stav',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
   },
   de: {
     title: 'AV Ankündigungsgenerator',
@@ -101,7 +101,7 @@ const translations = {
       noUrl: 'Bitte gib eine gültige URL ein.',
       status: 'Fehlerstatus',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/nV7Kcuf.png',
+    defaultTemplateUrl: 'https://i.imgur.com/7npp35Z.png',
   },
   en: {
     title: 'AV Announcement Generator',
@@ -153,7 +153,7 @@ const translations = {
       noUrl: 'Please provide a valid URL.',
       status: 'Error status',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
   },
   es: {
     title: 'Generador de Anuncios AV',
@@ -205,7 +205,7 @@ const translations = {
       noUrl: 'Por favor, proporciona una URL válida.',
       status: 'Estado de error',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/u6IiT1Q.png',
+    defaultTemplateUrl: 'https://i.imgur.com/NXRqTSs.png',
   },
   fr: {
     title: "Générateur d'Annonces AV",
@@ -257,7 +257,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/H9x9XOO.png',
+    defaultTemplateUrl: 'https://i.imgur.com/M2koZye.png',
   },
   fr_o: {
     title: "Générateur d'Annonces AV",
@@ -309,7 +309,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/RxHcT3u.png',
+    defaultTemplateUrl: 'https://i.imgur.com/NEopxXQ.png',
   },
   it: {
     title: 'Generatore di Annunci AV',
@@ -361,7 +361,7 @@ const translations = {
       noUrl: 'Inserisci un URL valido.',
       status: 'Stato errore',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/Rx13EE4.png',
+    defaultTemplateUrl: 'https://i.imgur.com/j39NmyQ.png',
   },
   nl: {
     title: 'AV mededeling maker',
@@ -413,7 +413,7 @@ const translations = {
       noUrl: 'Geef een geldige URL op.',
       status: 'Foutstatus',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/MB0YWTa.png',
+    defaultTemplateUrl: 'https://i.imgur.com/1y6BXxc.png',
   },
   pl: {
     title: 'Generator Ogłoszeń AV',
@@ -465,7 +465,7 @@ const translations = {
       noUrl: 'Podaj prawidłowy URL.',
       status: 'Status błędu',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/vcLIOqA.png',
+    defaultTemplateUrl: 'https://i.imgur.com/3WCktS6.png',
   },
   pt: {
     title: 'Gerador de Anúncios AV',
@@ -517,7 +517,7 @@ const translations = {
       noUrl: 'Por favor, forneça um URL válido.',
       status: 'Status do erro',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
   },
   zh_hant: {
     title: 'AV 公告生成器',
@@ -569,6 +569,6 @@ const translations = {
       noUrl: '請輸入有效的 URL。',
       status: '錯誤狀態',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/TAohdrY.png',
+    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
   },
 }
