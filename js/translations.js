@@ -35,7 +35,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'Obrázek musí mít přesně 1665x1665 pixelů.',
+        size: 'Obrázek musí mít přesně 1660x2075 pixelů.',
         load: 'Chyba při načítání obrázku. Zkontrolujte odkaz.',
         font: 'Chyba při načítání písma',
       },
@@ -49,7 +49,7 @@ const translations = {
       noUrl: 'Zadejte platnou URL.',
       status: 'Chybový stav',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
+    defaultTemplateUrl: 'https://i.imgur.com/ZUymFJK.png',
   },
   de: {
     title: 'AV Ankündigungsgenerator',
@@ -87,7 +87,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'Das Bild muss genau 1665x1665 Pixel groß sein.',
+        size: 'Das Bild muss genau 1660x2075 Pixel groß sein.',
         load: 'Fehler beim Laden des Bildes. Bitte überprüfe den Link.',
         font: 'Fehler beim Laden der Schriftart',
       },
@@ -101,7 +101,7 @@ const translations = {
       noUrl: 'Bitte gib eine gültige URL ein.',
       status: 'Fehlerstatus',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/7npp35Z.png',
+    defaultTemplateUrl: 'https://i.imgur.com/2IisIqc.png',
   },
   en: {
     title: 'AV Announcement Generator',
@@ -139,7 +139,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'The image must be exactly 1665x1665 pixels in size.',
+        size: 'The image must be exactly 1660x2075 pixels in size.',
         load: 'Error loading the image. Please check the link.',
         font: 'Error loading font',
       },
@@ -153,7 +153,7 @@ const translations = {
       noUrl: 'Please provide a valid URL.',
       status: 'Error status',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
+    defaultTemplateUrl: 'https://i.imgur.com/ZUymFJK.png',
   },
   es: {
     title: 'Generador de Anuncios AV',
@@ -191,7 +191,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'La imagen debe tener exactamente 1665x1665 píxeles.',
+        size: 'La imagen debe tener exactamente 1660x2075 píxeles.',
         load: 'Error al cargar la imagen. Por favor, verifica el enlace.',
         font: 'Error al cargar la fuente',
       },
@@ -205,7 +205,7 @@ const translations = {
       noUrl: 'Por favor, proporciona una URL válida.',
       status: 'Estado de error',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/NXRqTSs.png',
+    defaultTemplateUrl: 'https://i.imgur.com/rMSBMuH.png',
   },
   fr: {
     title: "Générateur d'Annonces AV",
@@ -243,7 +243,7 @@ const translations = {
     },
     error: {
       image: {
-        size: "L'image doit mesurer exactement 1665x1665 pixels.",
+        size: "L'image doit mesurer exactement 1660x2075 pixels.",
         load: "Erreur lors du chargement de l'image. Veuillez vérifier le lien.",
         font: 'Erreur de chargement de la police',
       },
@@ -257,7 +257,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/M2koZye.png',
+    defaultTemplateUrl: 'https://i.imgur.com/REHmAou.png',
   },
   fr_o: {
     title: "Générateur d'Annonces AV",
@@ -295,7 +295,7 @@ const translations = {
     },
     error: {
       image: {
-        size: "L'image doit mesurer exactement 1665x1665 pixels.",
+        size: "L'image doit mesurer exactement 1660x2075 pixels.",
         load: "Erreur lors du chargement de l'image. Veuillez vérifier le lien.",
         font: 'Erreur de chargement de la police',
       },
@@ -309,7 +309,7 @@ const translations = {
       noUrl: 'Veuillez fournir une URL valide.',
       status: "Statut d'erreur",
     },
-    defaultTemplateUrl: 'https://i.imgur.com/NEopxXQ.png',
+    defaultTemplateUrl: 'https://i.imgur.com/nUfdyb9.png',
   },
   it: {
     title: 'Generatore di Annunci AV',
@@ -347,7 +347,7 @@ const translations = {
     },
     error: {
       image: {
-        size: "L'immagine deve essere esattamente 1665x1665 pixel.",
+        size: "L'immagine deve essere esattamente 1660x2075 pixel.",
         load: 'Errore durante il caricamento dell’immagine. Verifica il link.',
         font: 'Errore durante il caricamento del font',
       },
@@ -361,7 +361,7 @@ const translations = {
       noUrl: 'Inserisci un URL valido.',
       status: 'Stato errore',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/j39NmyQ.png',
+    defaultTemplateUrl: 'https://i.imgur.com/qcVmDk7.png',
   },
   nl: {
     title: 'AV mededeling maker',
@@ -399,7 +399,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'De afbeelding moet exact 1665x1665 pixels groot zijn.',
+        size: 'De afbeelding moet exact 1660x2075 pixels groot zijn.',
         load: 'Fout bij het laden van de afbeelding. Controleer de link.',
         font: 'Fout bij het laden van het lettertype',
       },
@@ -413,7 +413,7 @@ const translations = {
       noUrl: 'Geef een geldige URL op.',
       status: 'Foutstatus',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/1y6BXxc.png',
+    defaultTemplateUrl: 'https://i.imgur.com/7OjNDLK.png',
   },
   pl: {
     title: 'Generator Ogłoszeń AV',
@@ -451,7 +451,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'Obraz musi mieć dokładnie 1665x1665 pikseli.',
+        size: 'Obraz musi mieć dokładnie 1660x2075 pikseli.',
         load: 'Błąd podczas ładowania obrazu. Sprawdź link.',
         font: 'Błąd podczas ładowania czcionki',
       },
@@ -465,7 +465,7 @@ const translations = {
       noUrl: 'Podaj prawidłowy URL.',
       status: 'Status błędu',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/3WCktS6.png',
+    defaultTemplateUrl: 'https://i.imgur.com/KnshQEX.png',
   },
   pt: {
     title: 'Gerador de Anúncios AV',
@@ -503,7 +503,7 @@ const translations = {
     },
     error: {
       image: {
-        size: 'A imagem deve ter exatamente 1665x1665 pixels.',
+        size: 'A imagem deve ter exatamente 1660x2075 pixels.',
         load: 'Erro ao carregar a imagem. Verifique o link.',
         font: 'Erro ao carregar a fonte',
       },
@@ -517,7 +517,7 @@ const translations = {
       noUrl: 'Por favor, forneça um URL válido.',
       status: 'Status do erro',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
+    defaultTemplateUrl: 'https://i.imgur.com/ZUymFJK.png',
   },
   zh_hant: {
     title: 'AV 公告生成器',
@@ -555,7 +555,7 @@ const translations = {
     },
     error: {
       image: {
-        size: '圖片必須為 1665x1665 像素。',
+        size: '圖片必須為 1660x2075 像素。',
         load: '加載圖片時出錯。請檢查連結。',
         font: '加載字體時出錯',
       },
@@ -569,6 +569,6 @@ const translations = {
       noUrl: '請輸入有效的 URL。',
       status: '錯誤狀態',
     },
-    defaultTemplateUrl: 'https://i.imgur.com/MgaIGUG.png',
+    defaultTemplateUrl: 'https://i.imgur.com/ZUymFJK.png',
   },
 }

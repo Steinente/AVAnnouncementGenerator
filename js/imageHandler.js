@@ -10,15 +10,15 @@ canvas.addEventListener('contextmenu', e => {
   const menuWidth = contextMenu.offsetWidth
   const menuHeight = contextMenu.offsetHeight
 
-  let posX = e.clientX || e.touches?.[0]?.clientX
-  let posY = e.clientY || e.touches?.[0]?.clientY
+  let posX = (e.clientX || e.touches?.[0]?.clientX) + window.scrollX
+  let posY = (e.clientY || e.touches?.[0]?.clientY) + window.scrollY
 
-  if (posX + menuWidth > screenWidth) {
-    posX = screenWidth - menuWidth
+  if (posX + menuWidth > screenWidth + window.scrollX) {
+    posX = screenWidth + window.scrollX - menuWidth
   }
 
-  if (posY + menuHeight > screenHeight) {
-    posY = screenHeight - menuHeight
+  if (posY + menuHeight > screenHeight + window.scrollY) {
+    posY = screenHeight + window.scrollY - menuHeight
   }
 
   contextMenu.style.top = `${posY}px`
@@ -30,8 +30,8 @@ canvas.addEventListener('contextmenu', e => {
 canvas.addEventListener('touchstart', e => {
   pressTimer = setTimeout(() => {
     contextMenu.style.display = 'block'
-    contextMenu.style.top = `${e.touches[0].clientY}px`
-    contextMenu.style.left = `${e.touches[0].clientX}px`
+    contextMenu.style.top = `${e.touches[0].clientY + window.scrollY}px`
+    contextMenu.style.left = `${e.touches[0].clientX + window.scrollX}px`
 
     document.addEventListener('click', closeContextMenu)
   }, 500)
@@ -70,7 +70,7 @@ function generateImage(onComplete) {
         const chapterPadding = 235
         let maxTextWidth = canvas.width - 2 * chapterPadding
         let font = 'SourceSansProSemiBold'
-        let chapterYPosition = 1030
+        let chapterYPosition = 1190
         if (twoLinesValue) {
           const chapterParts = splitTextInTwoLines(chapterValue)
           drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
@@ -110,14 +110,14 @@ function generateImage(onComplete) {
         const datePadding = 405
         maxTextWidth = canvas.width - 2 * datePadding
         const dateAdjustment = adjustFontSizeWithShift(context, dateValue, maxTextWidth, maxFontSize - 80, font)
-        const dateYPosition = 1300 + dateAdjustment.yOffset
+        const dateYPosition = 1460 + dateAdjustment.yOffset
         drawTextWithSpacing(context, dateValue, datePadding, dateYPosition, maxTextWidth, dateAdjustment.fontSize, font)
 
         // Time
         const timePadding = 320
         maxTextWidth = canvas.width - 2 * timePadding
         const timeAdjustment = adjustFontSizeWithShift(context, timeValue, maxTextWidth, maxFontSize - 80, font)
-        const timeYPosition = 1400 + timeAdjustment.yOffset
+        const timeYPosition = 1560 + timeAdjustment.yOffset
         drawTextWithSpacing(context, timeValue, timePadding, timeYPosition, maxTextWidth, timeAdjustment.fontSize, font)
 
         // Place
@@ -125,7 +125,7 @@ function generateImage(onComplete) {
         font = 'SourceSansProSemiBold'
         const placePadding = 235
         maxTextWidth = canvas.width - 2 * placePadding
-        const placeAdjustment = adjustFontSize(context, placeValue, maxTextWidth, maxFontSize - 40, font, 1520)
+        const placeAdjustment = adjustFontSize(context, placeValue, maxTextWidth, maxFontSize - 40, font, 1670)
         drawTextWithSpacing(
           context,
           placeValue,

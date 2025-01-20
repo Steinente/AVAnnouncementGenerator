@@ -11,7 +11,7 @@ setTemplateBtn.addEventListener('click', () => {
     img.src = templateLink.value
 
     img.onload = () => {
-      if (img.width === 1665 && img.height === 1665) {
+      if (img.width === 1660 && img.height === 2075) {
         updateTemplateLinkLocalStorage()
         templateModal.style.display = 'none'
         generateImage(() => {})
