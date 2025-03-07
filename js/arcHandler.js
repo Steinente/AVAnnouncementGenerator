@@ -17,14 +17,12 @@ arcFillBtn.addEventListener('click', () => {
   }
 
   const eventId = arcLink.value.split('/').pop()
-  const apiLink = `https://animalrightscalendar.org/api/events/${eventId}`
-  const proxyUrl = 'https://api.allorigins.win/get?url='
-  const proxiedApiLink = proxyUrl + encodeURIComponent(apiLink)
+  const backendUrl = `https://srv03.brrr.at/event?eventId=${eventId}`
 
   resetFields()
   arcFillBtn.disabled = true
 
-  fetch(proxiedApiLink)
+  fetch(backendUrl)
     .then(response => {
       if (!response.ok) {
         throw new Error(`${getTranslation('error.status')}: ${response.status}`)
@@ -32,10 +30,8 @@ arcFillBtn.addEventListener('click', () => {
       return response.json()
     })
     .then(data => {
-      const parsedData = JSON.parse(data.contents)
-
-      if (parsedData && parsedData.title && parsedData.start && parsedData.end && parsedData.location) {
-        let title = parsedData.title || ''
+      if (data && data.title && data.start && data.end && data.location) {
+        let title = data.title || ''
         title = title.replace(/^[^:]*:\s*/, '').trim()
         title = title.split(',')[0].trim()
         chapter.value = title
@@ -43,8 +39,8 @@ arcFillBtn.addEventListener('click', () => {
         const titleWords = title.split(/[\s-]+/)
         twoLines.checked = titleWords.length === 2
 
-        const parsedStart = new Date(parsedData.start)
-        const parsedEnd = new Date(parsedData.end)
+        const parsedStart = new Date(data.start)
+        const parsedEnd = new Date(data.end)
 
         const startDate = parsedStart.toLocaleDateString('de-DE', {
           day: '2-digit',
@@ -57,7 +53,7 @@ arcFillBtn.addEventListener('click', () => {
         date.value = formatDate(startDate)
         time.value = formatTime(startTime, endTime)
 
-        let location = parsedData.location || ''
+        let location = data.location || ''
         location = location.split(',')[0]
         place.value = location
       } else {
@@ -68,11 +64,7 @@ arcFillBtn.addEventListener('click', () => {
       arcModal.style.display = 'none'
     })
     .catch(error => {
-      if (error.message === 'Failed to fetch') {
-        showError(getTranslation('error.arc.cors'))
-      } else {
-        showError(getTranslation('error.arc.unknown'))
-      }
+      showError(getTranslation('error.arc.unknown'))
       resetFields()
       console.error(`${getTranslation('error.arc.api')}:`, error)
     })

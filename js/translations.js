@@ -41,7 +41,6 @@ const translations = {
       },
       arc: {
         url: 'Zadejte platný odkaz na událost ARC.',
-        cors: 'Chyba CORS: Povolte dočasný přístup na stránce https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Chyba při získávání API. Zkontrolujte odkaz.',
         data: 'Byla přijata neplatná nebo neúplná data z API.',
         api: 'Chyba při načítání API',
@@ -93,7 +92,6 @@ const translations = {
       },
       arc: {
         url: 'Bitte gib eine gültige ARC-URL eines Events ein.',
-        cors: 'CORS-Fehler: Bitte aktiviere temporären Zugriff unter https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Fehler beim Abrufen der API. Bitte überprüfe den Link.',
         data: 'Ungültige oder unvollständige Daten von der API erhalten.',
         api: 'Fehler beim Abrufen der API',
@@ -145,7 +143,6 @@ const translations = {
       },
       arc: {
         url: 'Please provide a valid ARC event URL.',
-        cors: 'CORS error: Please enable temporary access at https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Error fetching the API. Please check the link.',
         data: 'Invalid or incomplete data received from the API.',
         api: 'Error retrieving API',
@@ -197,7 +194,6 @@ const translations = {
       },
       arc: {
         url: 'Por favor, proporciona una URL válida del evento ARC.',
-        cors: 'Error CORS: Por favor, habilita el acceso temporal en https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Error al obtener la API. Por favor, verifica el enlace.',
         data: 'Datos inválidos o incompletos recibidos de la API.',
         api: 'Error al recuperar la API',
@@ -249,7 +245,6 @@ const translations = {
       },
       arc: {
         url: "Veuillez fournir une URL d'événement ARC valide.",
-        cors: "Erreur CORS : Veuillez activer l'accès temporaire à l'adresse https://cors-anywhere.herokuapp.com/corsdemo.",
         unknown: "Erreur lors de la récupération de l'API. Veuillez vérifier le lien.",
         data: "Données invalides ou incomplètes reçues de l'API.",
         api: "Échec de l'obtention de l'API",
@@ -301,7 +296,6 @@ const translations = {
       },
       arc: {
         url: "Veuillez fournir une URL d'événement ARC valide.",
-        cors: "Erreur CORS : Veuillez activer l'accès temporaire à l'adresse https://cors-anywhere.herokuapp.com/corsdemo.",
         unknown: "Erreur lors de la récupération de l'API. Veuillez vérifier le lien.",
         data: "Données invalides ou incomplètes reçues de l'API.",
         api: "Échec de l'obtention de l'API",
@@ -353,7 +347,6 @@ const translations = {
       },
       arc: {
         url: 'Per favore fornisci un URL ARC valido.',
-        cors: "Errore CORS: Abilita l'accesso temporaneo su https://cors-anywhere.herokuapp.com/corsdemo.",
         unknown: "Errore durante il recupero dell'API. Controlla il link.",
         data: 'Dati invalidi o incompleti ricevuti dall’API.',
         api: 'Errore nel recuperare l’API',
@@ -405,7 +398,6 @@ const translations = {
       },
       arc: {
         url: 'Geef een geldige ARC-evenement-URL op.',
-        cors: 'CORS-fout: Schakel tijdelijke toegang in via https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Fout bij het ophalen van de API. Controleer de link.',
         data: 'Ongeldige of onvolledige gegevens ontvangen van de API.',
         api: 'Fout bij het ophalen van de API.',
@@ -457,7 +449,6 @@ const translations = {
       },
       arc: {
         url: 'Podaj prawidłowy link do wydarzenia ARC.',
-        cors: 'Błąd CORS: Włącz tymczasowy dostęp na stronie https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Błąd podczas pobierania API. Sprawdź link.',
         data: 'Otrzymano nieprawidłowe lub niekompletne dane z API.',
         api: 'Błąd podczas pobierania API',
@@ -509,7 +500,6 @@ const translations = {
       },
       arc: {
         url: 'Por favor, forneça um URL válido de evento ARC.',
-        cors: 'Erro CORS: Habilite o acesso temporário em https://cors-anywhere.herokuapp.com/corsdemo.',
         unknown: 'Erro ao buscar a API. Verifique o link.',
         data: 'Dados inválidos ou incompletos recebidos da API.',
         api: 'Erro ao recuperar a API',
@@ -561,7 +551,6 @@ const translations = {
       },
       arc: {
         url: '請提供有效的 ARC 活動連結。',
-        cors: 'CORS 錯誤：請在 https://cors-anywhere.herokuapp.com/corsdemo 啟用臨時訪問。',
         unknown: '獲取 API 時出錯。請檢查連結。',
         data: '從 API 獲取的數據無效或不完整。',
         api: '檢索 API 時出錯',
