@@ -10,7 +10,7 @@ arcFillBtn.addEventListener('click', () => {
     return
   }
 
-  const validUrlPattern = /^https:\/\/animalrightscalendar\.org\/(events|api\/events)\/[a-zA-Z0-9]{24}$/
+  const validUrlPattern = /^https:\/\/animalrightscalendar\.org\/(?:api|admin\/collections)?\/?events\/[a-zA-Z0-9]{24}$/
   if (!validUrlPattern.test(arcLink.value)) {
     showError(getTranslation('error.arc.url'))
     return
