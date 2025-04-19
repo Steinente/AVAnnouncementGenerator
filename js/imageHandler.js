@@ -76,18 +76,27 @@ function generateImage(onComplete) {
           drawTwoLineChapter(context, chapterParts, chapterPadding, maxTextWidth, maxFontSize, font, chapterYPosition)
         } else {
           if (hasDiacriticAbove(chapterValue)) {
-            chapterYPosition += 25
+            chapterYPosition += 35
           }
           if (isAllChinese(chapterValue)) {
             context.textAlign = 'center'
             context.font = `${maxFontSize}px "${font}"`
             context.fillText(chapterValue, canvas.width / 2, chapterYPosition)
           } else {
+            let newMaxFontSize = maxFontSize
+            if (chapterValue.length === 3) {
+              newMaxFontSize += 60
+              chapterYPosition += 50
+            } else if (chapterValue.length === 4) {
+              newMaxFontSize += 45
+              chapterYPosition += 40
+            }
+
             const chapterAdjustment = adjustFontSize(
               context,
               chapterValue,
               maxTextWidth,
-              maxFontSize,
+              newMaxFontSize,
               font,
               chapterYPosition
             )
@@ -125,7 +134,7 @@ function generateImage(onComplete) {
         font = 'SourceSansProSemiBold'
         const placePadding = 235
         maxTextWidth = canvas.width - 2 * placePadding
-        const placeAdjustment = adjustFontSize(context, placeValue, maxTextWidth, maxFontSize - 40, font, 1670)
+        const placeAdjustment = adjustFontSize(context, placeValue, maxTextWidth, maxFontSize - 40, font, hasDiacriticAbove(placeValue) ? 1700 : 1675)
         drawTextWithSpacing(
           context,
           placeValue,
